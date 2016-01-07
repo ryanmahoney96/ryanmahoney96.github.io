@@ -4,7 +4,7 @@
 <html>
 
 	<head>
-		 <meta charset="utf-8">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -22,24 +22,28 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	
-		<style>
-			.theme1 {
-				border: 10px;
-				background-color:black;
-				padding: 30px;
-			}
-		</style>
+		<link rel = "stylesheet" href="css/styles.css">
+	
+		
 	</head>
 	
 	<body>
 		
-		<marquee behavior="alternate" direction = "down" bgcolor="#FF0000" loop="-1" 
-		width="100%" height = "120px" style = "border-solid;">
-			<marquee behavior = "alternate">
-				<p style = "color:yellow; font-size:300%">This is the Resume for 
-					MLG Pro MARK 'The Madman' MAHONEY!</p>
-			</marquee>
-		</marquee>
+		<div class = "row">
+			<div class = "col-xs-12">
+			
+			<!-- marquees refuse to work with bootstrap, as of now, so reducing screen size produces incorrect effects-->
+				<marquee behavior="alternate" scrolldelay = "50" direction = "down" bgcolor="#FF0000" loop="-1" 
+				width="100%" height = "120px" style = "border-solid;">
+					<marquee behavior = "alternate" scrolldelay = "50">
+						
+						<p style = "color:yellow; font-size:300%">This is the Resume for 
+							MLG Pro MARK 'The Madman' MAHONEY!</p>
+							
+					</marquee>
+				</marquee>
+			</div>
+		</div>
 		
 		<h1 style = "text-align:center; color:green;">LISTEN UP <abbr title = "You all">Y'ALL</abbr></h1>
 		
@@ -51,13 +55,13 @@
 				Spring Grove, IL 60081 <br/>
 				<a title = "Snail mail is for the ELDERLY YO!" style = "color:yellow" 
 				href="mailto:mmahoney@carthage.edu">mmahoney@carthage.edu
-				<span class = "glyphicons glyphicons-person-stick-old"></span></a><br/>
+				<span class = "glyphicon glyphicon-heart-empty"></span></a><br/>
 				(847)912-2642 <br/>
 			</p>
 	
 		<p>
 			Want to know something awesome? Mark passed <abbr title = "SCHAUMBURG HIGH FOO">HIGH SCHOOL. </abbr><br/>
-			So you KNOW this man LEET. <br/>
+			So you KNOW this man <abbr title = "Elite, you n00b">LEET. </abbr><br/>
 			<br/>
 		</p>
 		
@@ -76,22 +80,24 @@
 		<h3>
 		
 		<div class = "row">
-			<div class = "col-xs-4 theme1" style = "color:blue">
+			<div class = "col-xs-5" style = "color:blue">
 				Now we all know Mark can talk the talk
 			</div>
 			
-			<div class = "col-xs-4" style = "color:red">
-				<marquee behavior="alternate" bgcolor="#000000" loop="-1" width="100%" height = "60px" style = "border-solid;">
+			<div class = "col-xs-2" style = "color:red">
+				<marquee behavior="alternate" loop="-1" width="100%" height = "60px" style = "border-solid;">
 					<marquee behavior = "scroll" direction = "down">
 						But did you know
 					</marquee>
 				</marquee>
 			</div>
 			
-			<div class = "col-xs-4 theme1" style = "color:green">
+			<div class = "col-xs-5" style = "color:green">
 				He can also.........<em>Listen?</em>
 			</div>
 		</div>
+		
+		<br/>
 		
 		<img src = "images/tacotransplant.gif">
 		
@@ -103,21 +109,21 @@
 			<div class = "col-sm-4">
 				<img src = "images/makingVideo1.jpg" alt = "The First Hour" title = "The First Hour" class = "img-responsive 
 					center-block img-circle">
-				<p>Here we see Mark on the phone. Jack has obtained his phone number, 
+				<p class = "theme2"> Here we see Mark on the phone. Jack has obtained his phone number, 
 					and the two have been speaking for over an hour </p>
 			</div>	
 			
 			<div class = "col-sm-4">
 				<img src = "images/makingVideo2.jpg" alt = "Day 4" title = "Day 4" class = "img-responsive 
 					center-block img-circle">
-				<p>Jack refuses to relent. Mark has been unable to leave his desk for several days, and has
+				<p class = "theme2">Jack refuses to relent. Mark has been unable to leave his desk for several days, and has
 					resorted to eating post-its in his desk. He forgets what its like to sleep in a bed.</p>
 			</div>	
 			
 			<div class = "col-sm-4">
 				<img src = "images/makingVideo3.jpg" alt = "Week 6" title = "Week 6" class = "img-responsive 
 					center-block img-circle">
-				<p>Jack continues endlessly. Mark's ears are numb and his post-it rations running low.
+				<p class = "theme2">Jack continues endlessly. Mark's ears are numb and his post-it rations running low.
 					Suddenly, Jack says, "Well, yknow, I should probably let you go now..." 
 					As Mark begins to cheer with heartfelt bliss, Jack's momentary pause is interupted by laughter.
 					Mark's heart drops, and Jack continues on about the watchband of his Apple Watch... </p>
@@ -129,7 +135,7 @@
 			In Conclusion
 		</h3>
 		
-		<p>
+		<p class = "text-center">
 			Our main man Mark is not afraid to fight you, graduated <strong><em>HIGH</strong></em> School, 
 			and is capable of digesting post-its for <ins>months</ins>
 		</p>
