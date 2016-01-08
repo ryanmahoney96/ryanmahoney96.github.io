@@ -71,6 +71,7 @@ header {
 nav {
 	color:white;
 	line-height:30px;
+	height:800px;
 	background-color:#b4140e;
 	border-right-style:groove;
 	border-width:5px;
