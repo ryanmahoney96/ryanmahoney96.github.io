@@ -3,6 +3,10 @@ body {
 	background-color:black;
 }
 
+h4:mouse-over {
+	text-align:center;
+}
+
 /*----------------------------------------------------------------------------*/
 
 ol {
@@ -32,6 +36,11 @@ a:visited {
 	color:darkred;
 }
 
+a.emails:hover {
+	color:yellow;
+	text-decoration: none;
+}
+
 /*----------------------------------------------------------------------------*/
 
 header {
@@ -57,6 +66,7 @@ section {
 footer {
 	text-align:center;
 	color:white;
+	padding-bottom:10px;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -67,6 +77,8 @@ footer {
 	padding: 1px;
 	/*float:right;*/
 }
+
+
 
 
 
