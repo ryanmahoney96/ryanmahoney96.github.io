@@ -3,20 +3,29 @@ body {
 	background-color:black;
 }
 
-h4:mouse-over {
+h2 {
 	text-align:center;
+}
+
+h4 {
+	text-align:center;
+}
+
+h5 {
+	text-align:center;
+	color:white;
 }
 
 /*----------------------------------------------------------------------------*/
 
 ol {
-	border-style:groove double;
-	background:black;
-	padding: 2px;
-	margin:0px 5px;
+	border-radius: 30px;
+	padding: 0px;
+	margin-left:15px;
 }
 
 ol li{
+	border-radius: 30px;
 	text-align:center;
 	background:white;
 }
@@ -36,15 +45,19 @@ a:visited {
 	color:darkred;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 a.emails:hover {
 	color:yellow;
-	text-decoration: none;
 }
 
 /*----------------------------------------------------------------------------*/
 
 header {
 	text-align:center;
+	padding-bottom:10px;
 	color:white;
 }
 
@@ -66,7 +79,6 @@ section {
 footer {
 	text-align:center;
 	color:white;
-	padding-bottom:10px;
 }
 
 /*----------------------------------------------------------------------------*/
