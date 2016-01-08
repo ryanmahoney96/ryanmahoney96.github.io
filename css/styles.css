@@ -36,6 +36,10 @@ ol li:hover {
 	background:#eeeeee;
 }
 
+ul{
+	list-style-image: url('images/background.jpg');
+}
+
 /*----------------------------------------------------------------------------*/
 
 a:link {
@@ -66,16 +70,17 @@ header {
 
 nav {
 	color:white;
-	height:500px;
+	height:800px;
 	line-height:30px;
 	background-color:#b4140e;
+	border-right-style:groove;
+	border-width:5px;
 	float:left;
 	padding:5px;
 }
 
 section {
 	color:white;
-	height:500px;
 	background-color:#303030;
 	float:left;
 	padding:10px;
