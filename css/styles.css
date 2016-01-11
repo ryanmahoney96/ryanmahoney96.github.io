@@ -1,6 +1,12 @@
 
+@font-face {
+	font-family: expressway-rg;
+	src: url(fonts/expressway-rg.ttf);
+}
+
 body {
-	background-color:black;
+	font-family:expressway;
+	background-color:#252525;
 }
 
 h2 {
@@ -14,6 +20,10 @@ h4 {
 h5 {
 	text-align:center;
 	color:white;
+}
+
+mark {
+	background-color:#b4140e;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -37,7 +47,7 @@ ol li:hover {
 }
 
 ul{
-	list-style-image: url('images/background.jpg');
+	list-style: circle;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -61,6 +71,7 @@ a.emails:hover {
 /*----------------------------------------------------------------------------*/
 
 header {
+	font-family:expressway;
 	border-bottom-style:double;
 	border-width:20px;
 	text-align:center;
@@ -72,7 +83,7 @@ nav {
 	color:white;
 	line-height:30px;
 	height:800px;
-	background-color:#b4140e;
+	background-color:#9b1313;
 	border-right-style:groove;
 	border-width:5px;
 	float:left;
@@ -81,7 +92,7 @@ nav {
 
 section {
 	color:white;
-	background-color:#303030;
+	background-color:#361d1d;
 	float:left;
 	padding:10px;
 }
