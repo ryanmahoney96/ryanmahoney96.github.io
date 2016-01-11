@@ -6,7 +6,8 @@
 
 body {
 	font-family:expressway;
-	background-color:#252525;
+
+	background: linear-gradient(#9b1313, #252525);
 }
 
 h2 {
@@ -35,10 +36,11 @@ ol {
 }
 
 ol li{
-	color:black;
+	color:white;
 	border-radius: 30px;
+	margin-bottom: 5px;
 	text-align:center;
-	background:white;
+	background:#252525;
 }
 
 ol li:hover {
@@ -76,38 +78,39 @@ header {
 	border-width:20px;
 	text-align:center;
 	padding-bottom:10px;
+	font-size:250%;
 	color:white;
+	text-shadow: 0px 0px 5px black, 0px 0px 10px white;
 }
 
 nav {
 	color:white;
 	line-height:30px;
-	height:800px;
-	background-color:#9b1313;
+	height:650px;
+	background: linear-gradient(#9b1313, #252525);
 	border-right-style:groove;
-	border-width:5px;
+	border-width:1px;
 	float:left;
 	padding:5px;
 }
 
 section {
 	color:white;
-	background-color:#361d1d;
-	float:left;
+    background: linear-gradient(#151515, #252525);
 	padding:10px;
 }
 
 footer {
 	text-align:center;
 	color:white;
+	background: linear-gradient(#361d1d, #252525);
 }
 
 /*----------------------------------------------------------------------------*/
 
 #selfie {
-	border:3px dashed black;
-	background-color:white;
-	padding: 1px;
+	background-color: #9b1313;
+	padding: 2px;
 }
 
 
