@@ -120,9 +120,21 @@
 					<br/>
 					<hr>
 				</div>
+							
+				<div class = "fromTo form-group col-sm-5">
+					<label for = "firstMonth">Enter in the First Month you would like to view from:</label>
+					<input type = "text" class = "form-control" id = "firstMonth" placeholder = "First Month"/>
+				</div>
 				
+				
+				<div class = "fromTo form-group col-sm-5">
+					<label for = "lastMonth">Enter in the Last Month you would like to view to:</label>
+					<input type = "text" class = "form-control" id = "lastMonth" placeholder = "Last Month"/>
+				</div>
+				
+				<button type = "button" id = "timeSpan" class = "btn fromTo col-sm-2">Submit</button>
+				<br/>
 			</form>
-			
 			
 			<div>
 				<table id="mortgageTable" class="table table-striped table-bordered table-hover" style = "visibility:hidden">
@@ -184,6 +196,9 @@
 			var submitData = $("#formSubmission");
 			submitData.on("click", paymentCalculator);
 			
+			var timeSpanEnter = $("#timeSpan");
+			timeSpanEnter.on("click", timeSpanFunc);
+			
 			function paymentCalculator(){
 				
 				var principle = document.querySelector("#principleLoan").value;
@@ -194,10 +209,10 @@
 				if(numMonths == 0 ){
 					alert("You must specify a Time Period for the Loan");
 				}
-				else if(principle == "undefined" || principle == "NaN"){
+				else if(principle === undefined || principle === NaN || principle === ""){
 					alert("Please enter a valid value for the Principle Amount");
 				} 
-				else if(annualInterest == "undefined" && annualInterest == "NaN"){
+				else if(annualInterest === undefined || annualInterest === NaN || annualInterest === ""){
 					alert("You must specify a valid value for the Annual Interest");
 				}
 				else {
@@ -209,6 +224,8 @@
 					
 					submitted = true;
 
+					$(".fromTo").css("visibility", "visible");
+					
 					createTable(principle, numMonths, annualInterest, monthlyInterest, monthlyPayment);
 					
 					$("#mortgageTable").css("visibility", "visible");
@@ -241,6 +258,7 @@
 								tableRow.appendChild(tableData1);
 							}
 							table.appendChild(tableRow);
+							tableRow.setAttribute("class", "yearRow");
 						}
 						
 						var tableRow = document.createElement("tr");
@@ -281,7 +299,27 @@
 		function clear(e) {
 								
 				location.reload();
+		}
+		
+		function timeSpanFunc(e) {
+			var first = document.querySelector("#firstMonth").value;
+			var last =  document.querySelector("#lastMonth").value;
+			var numMonths = 0;		
+			
+			console.log(numMonths);
+			
+			var rows = $("#mortgageTable").not($(".yearRow")).children();
+			
+			for (var k = 0; k < first; k++){
+				$(rows[k]).css("visibility", "hidden");
 			}
+			for (var m = last; m < numMonths; m++){
+				$(rows[m]).css("visibility", "hidden");
+			}
+
+		
+		}	
+			
 			
 	</script>
 	
