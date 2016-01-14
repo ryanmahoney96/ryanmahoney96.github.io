@@ -180,7 +180,8 @@
 		$(document).ready(function() {
 			console.log("DOM loaded");
 				
-			var numMonths = 0;			
+			var numMonths = 0;	
+			var gnumMonths;
 			var monthlyPayment;	
 				
 			var submitted = false;
@@ -188,6 +189,7 @@
 			$(".numYears").on("click", function(){
 				$("#ddButton").text($(this).text());
 				numMonths = 12 * ($(this).attr("value"));
+				setNumMonths(numMonths);
 			});
 			
 			var clearButton = $("#clearButton");
@@ -248,7 +250,7 @@
 							var tableRow = document.createElement("tr");
 
 							var year = document.createElement("td");
-							var yearText = document.createTextNode( "Year " + i/12 );
+							var yearText = document.createTextNode( "Year " + (i/12 + 1));
 							year.appendChild(yearText);
 							tableRow.appendChild(year);
 							for(var j = 0; j < 4; j++){
@@ -301,20 +303,45 @@
 				location.reload();
 		}
 		
+		function setNumMonths (numMonths) {
+			gnumMonths = numMonths;
+		}
+		function getNumMonths (){
+			return gnumMonths;
+		}
+		
 		function timeSpanFunc(e) {
 			var first = document.querySelector("#firstMonth").value;
 			var last =  document.querySelector("#lastMonth").value;
-			var numMonths = 0;		
+			var numMonths = getNumMonths() ;		
 			
 			console.log(numMonths);
 			
-			var rows = $("#mortgageTable").not($(".yearRow")).children();
+			var rows = $("#mortgageTable tr").not(".yearRow");
+			var years = $("#mortgageTable tr.yearRow");
+
+			//rows = rows.children();
 			
 			for (var k = 0; k < first; k++){
-				$(rows[k]).css("visibility", "hidden");
+				if(k %12 == 0){
+					$(years[k/12 - 1]).css("display", "none");
+				}
+				$(rows[k]).css("display", "none");
 			}
-			for (var m = last; m < numMonths; m++){
-				$(rows[m]).css("visibility", "hidden");
+			
+			for(var p = first; p < last; p++){
+				if(p %12 == 0){
+					$(years[p/12 - 1]).css("display", "table-row");
+				}	
+				
+				$(rows[p]).css("display", "table-row");
+			}
+			
+			for (var m = last; m < numMonths + 1; m++){
+				if(m %12 == 0){
+					$(years[m/12 - 1]).css("display", "none");
+				}
+				$(rows[m]).css("display", "none");
 			}
 
 		
