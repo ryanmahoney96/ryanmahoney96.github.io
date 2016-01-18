@@ -45,7 +45,8 @@ ol li{
 
 ol li:hover {
 	color:red;
-	background:#eeeeee;
+	background:#cccccc;
+	box-shadow: 0px 0px 5px black, 0px 0px 10px white;
 }
 
 ul{
@@ -80,7 +81,12 @@ header {
 	padding-bottom:10px;
 	font-size:250%;
 	color:white;
-	text-shadow: 0px 0px 5px black, 0px 0px 10px white;
+	text-shadow: 0px 0px 5px white, 0px 0px 10px black;
+	
+}
+header:hover {
+	text-shadow: 0px 0px 5px black, 0px 0px 10px white;	
+
 }
 
 nav {
@@ -111,6 +117,7 @@ footer {
 #selfie {
 	background-color: #9b1313;
 	padding: 2px;
+	box-shadow: 0px 0px 5px black, 0px 0px 30px white;
 }
 
 
