@@ -69,6 +69,7 @@ body {
 }
 
 .carousel-caption {
+	margin:auto;
 	font-size: 12pt;
 	margin-bottom:250px;
 }
@@ -99,14 +100,18 @@ body {
 	text-shadow:0em 1px 1px #353535;
 }
 
-.spacer {
-	height:50px;
+.spacer1 {
+	height:120px;
+}
+.spacer2 {
+	height:60px;
 }
 
 footer {
 	text-align:center;
 	color:white;
 	background-color:black;
+	padding-bottom:5px;
 	border-image: url("checkerborder.jpg") 17 repeat;
 	border-top-width:15px;
 	border-left-width:0px;
@@ -145,7 +150,7 @@ footer {
 
 .textbox a {
 	font-size:140%;
-	color: #454545;
+	color: #656565;
 }
 
 .textbox a:hover {
@@ -181,11 +186,23 @@ footer {
 #drivers {
 	font-size:150%;
 	padding-bottom:40px;
+	margin-bottom:70px;
 }
 
 #drivers li {
 	list-style-type:none;
 }
+
+#ourLocations {
+	font-size:150%;
+	padding-bottom:40px;
+	margin-bottom:70px;
+}
+
+#ourLocations li {
+	list-style-type:none;
+}
+
 
 
 
