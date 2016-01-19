@@ -1,4 +1,13 @@
 
+@font-face {
+	font-family: arcon-regular;
+	src: url(fonts/Arcon-Rounded-Regular.otf);
+}
+
+body, footer, carousel {
+	font-family:arcon-regular;
+}
+
 body {
 	background-image: url("seamless tileableBrick_14_UV_H_CM_1.jpg");
 	margin:0px;
@@ -7,8 +16,8 @@ body {
 }
 
 #navTitle {
+	padding-top:0px;
 	font-size: 25px;
-	color: white;
 }
 
 .navbar-brand, .navbar-brand:hover {
@@ -42,6 +51,7 @@ body {
 .carousel-inner .item img, .carousel-inner .item a img {
 	height: 400px;
     width: auto;
+	min-width:330px;
     margin: auto;
 }
 
@@ -107,7 +117,13 @@ footer {
    height:90px;   /* Height of the footer */
 }
 
-
+.logo {
+	background-color:transparent;
+	padding:0px;
+	margin:0px;
+	height: 50px;
+	width:auto;
+}
 
 
 
