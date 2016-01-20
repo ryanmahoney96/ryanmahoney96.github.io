@@ -203,6 +203,10 @@ footer {
 	list-style-type:none;
 }
 
+#mapBox {
+	height:600px;
+	width:400px;
+}
 
 
 

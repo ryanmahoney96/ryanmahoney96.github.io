@@ -41,7 +41,7 @@
 				</div>
 				<div class = "collapse navbar-collapse" id = "myNavbar">
 					<ul  class = "nav navbar-nav">
-						<li><a href="http://ryanmahoney96.github.io/Homework3/requestRide.html">Request a Ride</a></li> 
+						<li><a href="http://ryanmahoney96.github.io/Homework3/requestRide.html">Find a Ride</a></li> 
 						<li><a href="http://ryanmahoney96.github.io/Homework3/ourLocations.html">Our Locations</a></li>
 						<li><a href="http://ryanmahoney96.github.io/Homework3/ourDrivers.html">Our Drivers</a></li>
 						<li><a href="http://ryanmahoney96.github.io/Homework3/contactUs.html">Contact Us</a></li>
@@ -59,13 +59,48 @@
 				<h1>Our Locations</h1>
 				
 				<ul>
-				
-					<li>
-					</li>
+					<li>Carthage College (WI)</li>
+					<li>University of Northwestern Ohio (OH) (Coming Soon!)</li>
+					<li>Vassar College (NY) (Coming Soon!)</li>
+					<li>Palm Beach Atlantic University (FL) (Coming Soon!)</li>
+					<li>University of Redlands (CA) (Coming Soon!)</li>
 				</ul>
 			
+			<hr>
+			
+				<fieldset>
+					<legend>Carthage College Student? Click on the map points below to find out where our CTT Zoomers Stop</legend>
+				
+					<div style = "display:none" class = "form-group">
+						<label for = "userZipCode">Enter in Your Zip Code:
+						<input type = "text" class = "form-control" id = "userZipCode" placeholder = "Zip Code"/>
+						
+						<button style = "float:right" type = "button" id = "submitData" class = "btn">Submit</button>
+					</div>
+					
+					<div style = "display:none" class = "form-group">
+						<label for = "distance">Enter a Search Radius</label>
+						
+						<div class = "dropdown">
+							<button id = "ddButton" class = "btn dropdown-toggle" type = "button" data-toggle = "dropdown">
+								Within
+							<span class = "glyphicon glyphicon-circle-arrow-down"></span>
+							</button>
+							<ul id = "ddList" class = "dropdown-menu">
+								<li><a href="#" value = "100" class ="numMiles">100 miles</a></li>
+								<li><a href="#" value = "300" class ="numMiles">300 miles</a></li>
+								<li><a href="#" value = "500" class ="numMiles">500 miles</a></li>
+								<li><a href="#" value = "3000" class ="numMiles">Show All</a></li>
+							</ul>	
+						</div>
+					</div>
+				</fieldset>
+				
+				<div id = "mapBox"></div>
+				
 			</div>
 		
+			
 			
 			
 			
@@ -90,5 +125,199 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			console.log("DOM loaded");
+			
+			$(".numMiles").on("click", function(){
+				$("#ddButton").text($(this).text());
+			});
+			
+			initMap();
+			
+			/*var submit = $("#submitData");
+			submit.on("click", initMap);
+						
+			function submitSearch(){
+
+			} */
+			
+			function initMap() {
+
+				var basicMap = {
+					center:new google.maps.LatLng(42.6221920,-87.8219501),
+					zoom:16,
+					mapTypeId:google.maps.MapTypeId.HYBRID
+				};
+				
+				var map = new google.maps.Map( document.querySelector("#mapBox") , basicMap);
+				
+				var oaksMarker=new google.maps.Marker({
+					position:{lat:42.618508, lng:-87.821435},
+					map:map
+				});
+				
+				var oaksInfo = new google.maps.InfoWindow({
+				  content:"Oaks 1-6"
+				});
+
+				google.maps.event.addListener(oaksMarker, 'click', function() {
+				  oaksInfo.open(map,oaksMarker);
+				});
+				
+				var lotsCHNMarker=new google.maps.Marker({
+					position:{lat:42.625942, lng:-87.820753},
+					map:map
+				});
+				var CHNInfo = new google.maps.InfoWindow({
+				  content:"Lots C, H, and N"
+				});
+
+				google.maps.event.addListener(lotsCHNMarker, 'click', function() {
+				  CHNInfo.open(map,lotsCHNMarker);
+				});
+				
+				var lentzMarker=new google.maps.Marker({
+					position:{lat:42.623802, lng:-87.820185},
+					map:map
+				});
+				var lentzInfo = new google.maps.InfoWindow({
+				  content:"Lentz Hall"
+				});
+
+				google.maps.event.addListener(lentzMarker, 'click', function() {
+				  lentzInfo.open(map,lentzMarker);
+				});
+				
+				var chapelMarker=new google.maps.Marker({
+					position:{lat:42.622271, lng:-87.820646},
+					map:map
+				});
+				var chapelInfo = new google.maps.InfoWindow({
+				  content:"A.F. Siebert Chapel"
+				});
+
+				google.maps.event.addListener(chapelMarker, 'click', function() {
+				  chapelInfo.open(map,chapelMarker);
+				});
+				
+				var libraryMarker=new google.maps.Marker({
+					position:{lat:42.622721, lng:-87.820421},
+					map:map
+				});
+				var libraryInfo = new google.maps.InfoWindow({
+				  content:"Hedberg Library"
+				});
+
+				google.maps.event.addListener(libraryMarker, 'click', function() {
+				  libraryInfo.open(map,libraryMarker);
+				});
+				
+				var clausenMarker=new google.maps.Marker({
+					position:{lat:42.624908, lng:-87.820442},
+					map:map
+				});
+				var cInfo = new google.maps.InfoWindow({
+				  content:"Clausen Center"
+				});
+
+				google.maps.event.addListener(clausenMarker, 'click', function() {
+				  cInfo.open(map,clausenMarker);
+				});
+				
+				var tarbleRESMarker=new google.maps.Marker({
+					position:{lat:42.621821, lng:-87.820786},
+					map:map
+				});
+				var tresInfo = new google.maps.InfoWindow({
+				  content:"Tarble Residence Hall"
+				});
+
+				google.maps.event.addListener(tarbleRESMarker, 'click', function() {
+				  tresInfo.open(map,tarbleRESMarker);
+				});
+				
+				var denhartMarker=new google.maps.Marker({
+					position:{lat:42.620952, lng:-87.821311},
+					map:map
+				});
+				var dInfo = new google.maps.InfoWindow({
+				  content:"Denhart Residence Hall"
+				});
+
+				google.maps.event.addListener(denhartMarker, 'click', function() {
+				  dInfo.open(map,denhartMarker);
+				});
+				
+				var wehrSTUMarker=new google.maps.Marker({
+					position:{lat:42.620100, lng:-87.821665},
+					map:map
+				});
+				var wsInfo = new google.maps.InfoWindow({
+				  content:"Todd Wehr Center and Student Union"
+				});
+
+				google.maps.event.addListener(wehrSTUMarker, 'click', function() {
+				  wsInfo.open(map,wehrSTUMarker);
+				});
+				
+				var johnsonMadriganoMarker=new google.maps.Marker({
+					position:{lat:42.619594, lng:-87.821311},
+					map:map
+				});
+				var jmInfo = new google.maps.InfoWindow({
+				  content:"Johnson and Madrigano Residence Halls"
+				});
+
+				google.maps.event.addListener(johnsonMadriganoMarker, 'click', function() {
+				  jmInfo.open(map,johnsonMadriganoMarker);
+				});
+				
+				var lotAMarker=new google.maps.Marker({
+					position:{lat:42.621718, lng:-87.823082},
+					map:map
+				});
+				var aInfo = new google.maps.InfoWindow({
+				  content:"Lot A"
+				});
+
+				google.maps.event.addListener(lotAMarker, 'click', function() {
+				  aInfo.open(map,lotAMarker);
+				});
+				
+				var lotDMarker=new google.maps.Marker({
+					position:{lat:42.624608, lng:-87.822792},
+					map:map
+				});
+				var dInfo = new google.maps.InfoWindow({
+				  content:"Lot D"
+				});
+
+				google.maps.event.addListener(lotDMarker, 'click', function() {
+				  dInfo.open(map,lotDMarker);
+				});
+				
+				var lotIMarker=new google.maps.Marker({
+					position:{lat:42.621829, lng:-87.821397},
+					map:map
+				});
+				var iInfo = new google.maps.InfoWindow({
+				  content:"Lot I"
+				});
+
+				google.maps.event.addListener(lotIMarker, 'click', function() {
+				  iInfo.open(map,lotIMarker);
+				});
+				
+				
+				console.log("hello?");
+
+			}
+		});	
+			
+	</script>
   </body>
 </html>
