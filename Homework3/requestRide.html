@@ -226,7 +226,7 @@
 				var name = $("#userName").val();
 				var email = $("#userEA").val();
 			
-				firebaseRef.push({"Name": name, "Pick Up": pickUp, "Drop Off": dropOff, "Email": email});
+				firebaseRef.push({"name": name, "pickUp": pickUp, "dropOff": dropOff, "email": email});
 				
 				window.open("confirmation.html", "_self");			
 			});

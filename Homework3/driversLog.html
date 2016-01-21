@@ -45,7 +45,7 @@
 		<div id = "logBox" class = "textbox container">
 			<h1>Request Log</h1>
 			
-			<ul>
+			<ul id = "requestList">
 			
 			
 			</ul>
@@ -72,19 +72,52 @@
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>	
+	
 	<script>
 		$(document).ready(function() {
 			console.log("DOM loaded");
 			
+			var firebaseRef = new Firebase("https://cttRequestLog.firebaseio.com/");
 			
+			firebaseRef.orderByKey().on("child_added", function(snapshot, previousNeighborId){
 			
+				var request = snapshot.val();
+				
+				var requestLi = $("<li>" + request.name + ", at " + request.pickUp + "</li>");
+				
+				requestLi.attr("id", snapshot.key());
 			
+				if(previousNeighborId !== null) {
+                        
+                    //get the li of the previous one
+                    var previousRequestLi = $("#" + previousNeighborId);
+                        
+                    //add the new li after the previous one
+                    previousRequestLi.after(requestLi);        
+                        
+                } 
+				
+				else { //no previous neighbor
+                        
+					//grab the guestlist ul
+					var requestList = $("#requestList");
+						
+					//add the first item to the list
+					requestList.append(requestLi);
+					
+                }
+			});
 			
+			//ask for a continuous read of the root of the firebase with on("child_removed")
+			firebaseRef.on("child_removed", function(snapshot) {
+				
+				//remove the li with the deleted guest's id
+				$("#" + snapshot.key()).remove();
+				
+			});
 			
-			
-			
-			
-			
+						
 		});
 	</script>
   </body>
