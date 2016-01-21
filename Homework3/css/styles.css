@@ -183,7 +183,7 @@ footer {
 	color: #454545;
 }
 
-#drivers {
+#drivers, #rideRequestForm {
 	font-size:150%;
 	padding-bottom:40px;
 	margin-bottom:70px;
@@ -208,7 +208,18 @@ footer {
 	width:400px;
 }
 
+#startDDList, #endDDList {
+	height:150px;
+	overflow:auto;
+}
 
+#logBox {
+	min-height:300px;
+}
+
+#titleTop {
+	text-align:center;
+}
 
 
 

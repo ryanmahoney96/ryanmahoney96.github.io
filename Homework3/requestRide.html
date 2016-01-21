@@ -55,7 +55,124 @@
 		<!----------------------------------------------------------------------->
 		<div id = "body">
 			
-		
+			<div id = "rideRequestForm" class = "textbox container">
+				<h1>Get a Ride</h1>
+				
+				<fieldset>
+					<legend>
+						Enter your Information to Request a Ride
+					</legend>
+					
+					<div class = "form-group">
+							<label for = "userName">Enter in Your Name:</label>
+							<input type = "text" class = "form-control" id = "userName" placeholder = "Your Name"/>
+							
+					</div>
+						
+					<div class = "form-group">
+						<label for = "start">Where should we pick you up? </label>
+						
+						<div class = "dropdown">
+							<button id = "startDDButton" class = "btn dropdown-toggle" type = "button" data-toggle = "dropdown">
+								Pick Up
+								<span class = "glyphicon glyphicon-circle-arrow-down"></span>
+							</button>
+							
+							<ul id = "startDDList" class = "dropdown-menu">
+								<li><a href="#" value = "A. F. Siebert Chapel" class ="startLocation">A. F. Siebert Chapel</a></li>
+								
+								<li><a href="#" value = "Denhart Residence Hall" class ="startLocation">Denhart Residence Hall</a></li>
+								
+								<li><a href="#" value = "Hedberg Library" class ="startLocation">Hedberg Library</a></li>
+								
+								<li><a href="#" value = "Johnson Residence Hall" class ="startLocation">Johnson Residence Hall</a></li>
+								
+								<li><a href="#" value = "Lentz Hall" class ="startLocation">Lentz Hall</a></li>
+								
+								<li><a href="#" value = "Lot A" class ="startLocation">Lot A</a></li>
+								
+								<li><a href="#" value = "Lots CHN" class ="startLocation">Lot C, H, or N</a></li>
+								
+								<li><a href="#" value = "Lot D" class ="startLocation">Lot D</a></li>
+								
+								<li><a href="#" value = "Lot I" class ="startLocation">Lot I</a></li>
+								
+								<li><a href="#" value = "Madrigano Residence Hall" class ="startLocation">Madrigano Residence Hall</a></li>
+								
+								<li><a href="#" value = "The Oaks" class ="startLocation">The Oaks</a></li>
+								
+								<li><a href="#" value = "The Student Union" class ="startLocation">The Student Union</a></li>
+								
+								<li><a href="#" value = "Tarble Gymnasium" class ="startLocation">Tarble Gymnasium</a></li>
+								
+								<li><a href="#" value = "Tarble Residence Hall" class ="startLocation">Tarble Residence Hall</a></li>
+								
+								<li><a href="#" value = "Todd Wehr Center" class ="startLocation">Todd Wehr Center</a></li>
+								
+								
+																
+							</ul>	
+						</div>
+						
+					</div>
+					
+					<div class = "form-group">
+						<label for = "end">Where are you Headed?</label>
+						
+						<div class = "dropdown">
+							<button id = "endDDButton" class = "btn dropdown-toggle" type = "button" data-toggle = "dropdown">
+								Drop Off
+							<span class = "glyphicon glyphicon-circle-arrow-down"></span>
+							</button>
+							<ul id = "endDDList" class = "dropdown-menu">
+								<li><a href="#" value = "A. F. Siebert Chapel" class ="endLocation">A. F. Siebert Chapel</a></li>
+								
+								<li><a href="#" value = "Denhart Residence Hall" class ="endLocation">Denhart Residence Hall</a></li>
+								
+								<li><a href="#" value = "Hedberg Library" class ="endLocation">Hedberg Library</a></li>
+								
+								<li><a href="#" value = "Johnson Residence Hall" class ="endLocation">Johnson Residence Hall</a></li>
+								
+								<li><a href="#" value = "Lentz Hall" class ="endLocation">Lentz Hall</a></li>
+								
+								<li><a href="#" value = "Lot A" class ="endLocation">Lot A</a></li>
+								
+								<li><a href="#" value = "Lots CHN" class ="endLocation">Lot C, H, or N</a></li>
+								
+								<li><a href="#" value = "Lot D" class ="endLocation">Lot D</a></li>
+								
+								<li><a href="#" value = "Lot I" class ="endLocation">Lot I</a></li>
+								
+								<li><a href="#" value = "Madrigano Residence Hall" class ="endLocation">Madrigano Residence Hall</a></li>
+								
+								<li><a href="#" value = "The Oaks" class ="endLocation">The Oaks</a></li>
+								
+								<li><a href="#" value = "The Student Union" class ="endLocation">The Student Union</a></li>
+								
+								<li><a href="#" value = "Tarble Gymnasium" class ="endLocation">Tarble Gymnasium</a></li>
+								
+								<li><a href="#" value = "Tarble Residence Hall" class ="endLocation">Tarble Residence Hall</a></li>
+								
+								<li><a href="#" value = "Todd Wehr Center" class ="endLocation">Todd Wehr Center</a></li>
+								
+							</ul>	
+						</div>
+						
+					</div>
+					
+					<div class = "form-group">
+							<label for = "userEA">Enter your Email Address:</label>
+							
+							<input type = "text" class = "form-control" id = "userEA" placeholder = "Your Email Address"/>	
+					</div>
+					
+					<button id = "submitButton" class = "btn" type = "button">
+						Request Ride
+					</button>
+					
+				</fieldset>
+			
+			</div>
 			
 			
 			
@@ -65,6 +182,8 @@
 			
 			
 		</div> <!--end of special div for body-->
+		
+		<div class = "spacer2"></div>
 		
 		<footer class = "footer">
 			<div class = "container">
@@ -80,5 +199,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	
+	<script>
+	
+	$(document).ready(function() {
+			console.log("DOM loaded");
+			
+			var pickUp;
+			var dropOff;
+			
+			$(".startLocation").on("click", function(){
+				$("#startDDButton").text($(this).text());
+				pickUp = $(this).text();
+			});
+		
+			$(".endLocation").on("click", function(){
+				$("#endDDButton").text($(this).text());
+				dropOff = $(this).text();
+			});
+			
+			var firebaseRef = new Firebase("https://cttRequestLog.firebaseio.com/");
+			
+			$("#submitButton").on("click", function(){
+				var name = $("#userName").val();
+				var email = $("#userEA").val();
+			
+				firebaseRef.push({"Name": name, "Pick Up": pickUp, "Drop Off": dropOff, "Email": email});
+				
+				window.open("ryan.mahoney96.github.io/Homework3/confirmation.html");			
+			});
+	
+			
+	});
+	
+	</script>
+	
   </body>
 </html>
+
+
+
+
+
+
