@@ -41,9 +41,7 @@ body {
 #navStyle {
 	background-color: #fec828;
 	border-image: url("checkerborder.jpg") 17 repeat;
-	border-top-width:0px;
-	border-left-width:0px;
-	border-right-width:0px;
+	border-width:0px;
 	border-bottom-width:15px;
 }
 
@@ -220,6 +218,19 @@ footer {
 #titleTop {
 	text-align:center;
 }
+
+#requestList li {
+	padding-bottom:15px;
+	font-size:150%;
+}
+
+
+
+
+
+
+
+
 
 
 

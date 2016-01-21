@@ -163,7 +163,7 @@
 					<div class = "form-group">
 							<label for = "userEA">Enter your Email Address:</label>
 							
-							<input type = "text" class = "form-control" id = "userEA" placeholder = "Your Email Address"/>	
+							<input type = "email" class = "form-control" id = "userEA" placeholder = "Your Email Address"/>	
 					</div>
 					
 					<button id = "submitButton" class = "btn" type = "button">
@@ -207,8 +207,8 @@
 	$(document).ready(function() {
 			console.log("DOM loaded");
 			
-			var pickUp;
-			var dropOff;
+			var pickUp = null;
+			var dropOff = null;
 			
 			$(".startLocation").on("click", function(){
 				$("#startDDButton").text($(this).text());
@@ -223,13 +223,38 @@
 			var firebaseRef = new Firebase("https://cttRequestLog.firebaseio.com/");
 			
 			$("#submitButton").on("click", function(){
+				
 				var name = $("#userName").val();
 				var email = $("#userEA").val();
+								
+				console.log(name);
 			
-				firebaseRef.push({"name": name, "pickUp": pickUp, "dropOff": dropOff, "email": email});
+				if(name == ""){
+					alert("Please enter yor name, it helps us find you and keep our process speedy");
+				}
+				else if(email == "" || validateEmail(email) == false){
+					alert("Please enter your email, that way we can send you a notificiton when your driver has arrived");
+				}
+				else if(pickUp == null){
+					alert("Please tell us where to pick you up");
+				}
+				else {
+					
 				
-				window.open("confirmation.html", "_self");			
+					firebaseRef.push({"name": name, "pickUp": pickUp, "dropOff": dropOff, "email": email});
+					
+					window.open("confirmation.html", "_self");	
+				}
 			});
+			
+			function validateEmail(emailAddress) {
+				var atPos = emailAddress.indexOf("@");
+				var dotPos = emailAddress.lastIndexOf(".");
+			
+				if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= emailAddress.length) {
+					return false;
+				}
+			}
 	
 			
 	});

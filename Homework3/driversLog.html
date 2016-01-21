@@ -42,15 +42,15 @@
 		<!----------------------------------------------------------------------->
 		<div id = "body">
 			
-		<div id = "logBox" class = "textbox container">
-			<h1>Request Log</h1>
-			
-			<ul id = "requestList">
-			
-			
-			</ul>
-			
-		</div>
+			<div id = "logBox" class = "textbox container">
+				<h1>Request Log</h1>
+				
+				<ol id = "requestList">
+				
+				
+				</ol>
+				
+			</div>
 			
 			
 			
@@ -84,7 +84,7 @@
 			
 				var request = snapshot.val();
 				
-				var requestLi = $("<li>" + request.name + ", at " + request.pickUp + "</li>");
+				var requestLi = $("<li>" + request.name + ", at " + request.pickUp + " " + "</li>");
 				
 				requestLi.attr("id", snapshot.key());
 			
@@ -107,6 +107,27 @@
 					requestList.append(requestLi);
 					
                 }
+				
+				var pickUpButton = document.createElement("button");
+				var btnText = document.createTextNode("Pick Up");
+				
+				
+				pickUpButton.appendChild(btnText);
+				$("#" + snapshot.key()).append(pickUpButton);
+				
+				pickUpButton.addEventListener("click", function(){
+					console.log("pickUpPressed");
+					
+					var requestRef = new Firebase('https://cttRequestLog.firebaseio.com/' + snapshot.key());
+					
+					var sendTo = request.email;
+					var pickUpLoc = request.pickUp;
+					console.log(sendTo);
+					
+					window.open('mailto:' + sendTo + '?subject=Your Driver has Arrived!&body=Hey There! This is an email notification letting you know your CTT driver has arrived at ' + pickUpLoc + ' to pick you up.');
+					
+					requestRef.remove();
+				});
 			});
 			
 			//ask for a continuous read of the root of the firebase with on("child_removed")
