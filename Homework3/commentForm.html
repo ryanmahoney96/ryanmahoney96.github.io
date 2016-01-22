@@ -166,25 +166,29 @@
 			$("#submitButton").on("click", function(){
 				
 				var comment = $("#commentContent").val();
-			
-				console.log(comment);			
-							
-				if(target == null || target == ""){
-					target = "General Comments";
+				
+				if(comment == ""){
+					alert("To ensure your satisfaction, we ask that you enter something into the comment box");
 				}
-				
-				var commentRef = new Firebase("https://cttdrivercomments.firebaseio.com/" + target);
-				
-				var name = $("#userName").val();
-											
-				if(name == ""){
-					name = "anonymous";
-				}				
-				
-				commentRef.push(comment);
-				
-				window.open("confirmation.html", "_self");	
-				
+				else {
+					console.log(comment);			
+								
+					if(target == null || target == ""){
+						target = "General Comments";
+					}
+					
+					var commentRef = new Firebase("https://cttdrivercomments.firebaseio.com/" + target);
+					
+					var name = $("#userName").val();
+												
+					if(name == ""){
+						name = "anonymous";
+					}				
+					
+					commentRef.push({"name":name, "comment":comment});
+					
+					window.open("commentConfirmation.html", "_self");	
+				}
 			});
 			
 				
