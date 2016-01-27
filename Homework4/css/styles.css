@@ -1,0 +1,136 @@
+
+/*need white base, light purple accent and text, black power border*/
+
+@font-face {
+	font-family: comfortaa;
+	src: url("fonts/Comfortaa-Regular.ttf");
+}
+
+@font-face {
+	font-family: dolce;
+	src: url("fonts/Dolce Vita.ttf");
+}
+
+#title {
+	padding-top:10px;
+	margin-top:0px;
+}
+
+body, footer {
+	font-family: comfortaa;
+}
+
+/* body, #body {
+	min-height:500px;
+} */
+
+body {
+	background-image: url("seamlessCorkBoard.jpg");
+	margin:0px;
+	padding:0px;
+}
+
+#mainContent {
+	padding:0px;
+	min-height:585px;
+}
+
+#contentReel {
+	min-height:585px;
+	margin-bottom:20px;
+}
+
+#contentReel, #submission, #postBox {
+	background-color:#ffffcc;
+	padding:15px;
+	border-radius:10px;
+}
+
+.glyph {
+	color:white;
+}
+
+/* #logo1 {
+	margin-top:10px;
+	max-height:30px;
+	max-width:30px;
+} */
+
+#logo2 {
+	margin-top:10px;
+	max-height:30px;
+	max-width:30px;
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+	position: absolute;
+	left: 50%;
+}
+
+#navTitle {
+	font-family:dolce;
+	padding-top:0px;
+}
+
+#navStyle {
+	background-color: black;
+}
+
+#navStyle a, .footer {
+	color: #ffcb93;
+}
+
+#navStyle a:hover {
+	color:white;
+	background-color: initial;
+}
+
+#navLinks {
+	float:right;
+}
+
+footer {
+	text-align:center;
+	color:white;
+	background-color:black;
+	padding-bottom:5px;
+}
+
+.footer {
+    float:left;
+    width:45%;
+    height:5%;
+}
+
+#bckwrds {
+	font-family:dolce;
+	display:inline-block;
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
+    -o-transform:rotateY(180deg);
+    -ms-transform:rotateY(180deg);
+    unicode-bidi:bidi-override;
+    direction:rtl;
+}
+
+legend {
+	text-align:center;
+}
+
+#userLocation {
+	margin-bottom:5px;
+}
+
+label textarea {
+	vertical-align:middle;
+}
+
+#serviceContent {
+	max-width:500px;
+}
+
+
+
+
+
+
