@@ -9,7 +9,8 @@ var userLongitude = "";
 function doReverse() {
 		
 	safe = SAMPLE_POST_REVERSE;
-	
+	console.log(safe);
+
 	getLocation();
 	
 	
@@ -49,6 +50,7 @@ function setPosition (position){
 	console.log(userLatitude);
 	
 	safe += '&location=' + userLatitude + ',' + userLongitude;
+	console.log(safe);
 	
 	$.ajax({
 		
@@ -64,11 +66,12 @@ function setPosition (position){
 			var i = 0;
 			var j = 0;
 			console.log(response);
-			console.log("poo");
 			
 			var location = response.results[0].locations[0];
 			html = location.postalCode;
 			console.log(html);
+			
+			$("#userLocation").val(html);
 		},
 		error: function (response){
 			console.log("Response: " + response);
