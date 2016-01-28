@@ -51,36 +51,34 @@ function getRadius(zip, radius) {
 			}
 			
 			for(var t = 0; t < providerList.length; t++ ){
-				for(var y = 0; y < providerList[t].length; y++){
 
-					var provider = providerList[t][y];
-					
-					var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
-					
-					providerLi.attr("id", provider + t);
+				var provider = providerList[t];
 				
-
-					var serviceList = $("#serviceList");
-						console.log("here");
-					serviceList.append(providerLi);
-					
-					
-					var emailButton = document.createElement("button");
-					var btnText = document.createTextNode("Email" + provider.email);
-
-					emailButton.appendChild(btnText);
-					$("#" + provider + t).append(emailButton);
-					
-					emailButton.addEventListener("click", function(){
-						console.log("emailPressed");
-										
-						var sendTo = provider.email;
-						console.log(sendTo);
-						
-						window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
+				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
+				
+				providerLi.attr("id", provider + t);
 			
-					});
-				}
+
+				var serviceList = $("#serviceList");
+					console.log("here");
+				serviceList.append(providerLi);
+				
+				
+				var emailButton = document.createElement("button");
+				var btnText = document.createTextNode("Email" + provider.email);
+
+				emailButton.appendChild(btnText);
+				$("#" + provider + t).append(emailButton);
+				
+				emailButton.addEventListener("click", function(){
+					console.log("emailPressed");
+									
+					var sendTo = provider.email;
+					console.log(sendTo);
+					
+					window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
+		
+				});
 			}
 		});
 				
