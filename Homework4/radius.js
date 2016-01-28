@@ -20,6 +20,7 @@ function getRadius(zip, radius) {
 		
 		var zipList = [];
 		var providerList = [];
+		var keyArr = [];
 	
 		for(var i = 0; i < result.zip_codes.length; i++){
 			console.log("56");
@@ -31,51 +32,54 @@ function getRadius(zip, radius) {
 				for(var x = 0; x < zipList.length; x++){
 					console.log("inloop");
 					if(childSnapshot.key() == zipList[x].zip_code){
-						var childRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + childSnapshot.key());
-						childRef.orderByKey().once('value', function(sshot){
-							sshot.forEach(function(cSnapshot){
-								console.log("iniffor");
-								providerList.push(cSnapshot.val());
-							});
-						});	
-					continue;
+						keyArr.push(childSnapshot.key());
+						continue;
 					}
 				}
 			});
 			
-			for(var t = 0; t < providerList.length; t++ ){
-			for(var y = 0; y < providerList[t].length; y++){
-
-				var provider = providerList[t][y];
-				
-				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
-				
-				providerLi.attr("id", provider + t);
-			
-
-				var serviceList = $("#serviceList");
-					console.log("here");
-				serviceList.append(providerLi);
-				
-				
-				var emailButton = document.createElement("button");
-				var btnText = document.createTextNode("Email" + provider.email);
-
-				emailButton.appendChild(btnText);
-				$("#" + provider + t).append(emailButton);
-				
-				emailButton.addEventListener("click", function(){
-					console.log("emailPressed");
-									
-					var sendTo = provider.email;
-					console.log(sendTo);
-					
-					window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
-		
+			for(var u = 0; u < keyArr.length; u++){
+				var childRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + keyArr[u]);
+				childRef.orderByKey().once('value', function(snapshot){
+					snapshot.forEach(function(childSnapshot){
+						console.log("iniffor");
+						providerList.push(childSnapshot.val());
+					});
 				});
 			}
-		}
 			
+			for(var t = 0; t < providerList.length; t++ ){
+				for(var y = 0; y < providerList[t].length; y++){
+
+					var provider = providerList[t][y];
+					
+					var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
+					
+					providerLi.attr("id", provider + t);
+				
+
+					var serviceList = $("#serviceList");
+						console.log("here");
+					serviceList.append(providerLi);
+					
+					
+					var emailButton = document.createElement("button");
+					var btnText = document.createTextNode("Email" + provider.email);
+
+					emailButton.appendChild(btnText);
+					$("#" + provider + t).append(emailButton);
+					
+					emailButton.addEventListener("click", function(){
+						console.log("emailPressed");
+										
+						var sendTo = provider.email;
+						console.log(sendTo);
+						
+						window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
+			
+					});
+				}
+			}
 		});
 				
 		
