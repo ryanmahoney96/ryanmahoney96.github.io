@@ -35,7 +35,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
 					 </button>
-					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "#">
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "RvrsBoard.html">
 						<h1 id = "title">
 							<span>Rvrs </span>
 							
@@ -54,8 +54,8 @@
 				</div>
 				<div class = "collapse navbar-collapse" id = "navLinks">
 					<ul  class = "nav navbar-nav">
-						<li><a href="#">Post a Service</a></li> 
-						<li><a href="#">Find a Service</a></li>
+						<li><a href="postService.html">Post a Service</a></li> 
+						<li><a href="findService.html">Find a Service</a></li>
 					</ul>
 				</div>
 			</div>
@@ -68,7 +68,9 @@
 				<div class = "row">
 				
 					<div class = "col-sm-8" id = "contentReel">
+						<div id = "reel">
 						
+						</div>
 					</div>
 					
 					<div class = "col-sm-1" id = "spacer">
@@ -76,8 +78,9 @@
 					</div>
 					
 					<div class = "col-sm-3" id = "submission">
-						<div>
-							
+						<div id = "companyBio">
+							<h3>"A Backwards Company"</h3>
+							<p>Rvrs Board is a company striving to turn the monotony of the job search on its head. By putting power in the hands of our network of Providers, companies and employers will be coming to YOU for work. <a id = "signUp" href = "postService.html">Sign up</a> now to become one of our millions of Service Providers!</p>
 						</div>
 					</div>
 					
@@ -99,9 +102,14 @@
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	
+	
 	<script>
 		$(document).ready(function() {
 			console.log("DOM loaded");
+			
+			var firebaseRef = new Firebase ("https://providerprofiles.firebaseio.com/");
 			
 			var viewportWidth = $(window).width();
 			
@@ -109,10 +117,14 @@
 			
 			if (viewportWidth < 500){
 				$("#logo2").hide();
-			
 			}
-	
-	
+			
+			//figure this out, or do a search of within 10 miles
+			var query = firebaseRef.orderByChild("timestamp").limitToLast(10);
+			
+			query.once("value", function(snapshot) {
+			  console.log(snapshot);
+			});
 	
 		});
 	</script>

@@ -35,15 +35,40 @@ body {
 	min-height:585px;
 }
 
-#contentReel {
+.form-control {
+	margin-bottom:5px;
+}
+
+#submission {
+	background-color:#ffffcc;
+	padding:15px;
+	border-radius:10px;
+	margin-bottom:20px;
+}
+
+#contentReel, #postBox, #findBox {
+	background-color:#ffffcc;
+	padding:15px;
+	border-radius:10px;
 	min-height:585px;
 	margin-bottom:20px;
 }
 
-#contentReel, #submission, #postBox {
-	background-color:#ffffcc;
-	padding:15px;
+#companyBio {
+	font-size:120%;
+	padding:3px;
+	color:black;
 	border-radius:10px;
+	min-height:215px;
+	background-color:white;
+}
+
+#reel {
+	padding:3px;
+	color:black;
+	border-radius:10px;
+	min-height:515px;
+	background-color:white;
 }
 
 .glyph {
@@ -83,6 +108,10 @@ body {
 #navStyle a:hover {
 	color:white;
 	background-color: initial;
+}
+
+#signUp {
+	color: #ff7b24;
 }
 
 #navLinks {

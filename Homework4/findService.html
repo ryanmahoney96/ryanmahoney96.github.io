@@ -36,7 +36,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
 					 </button>
-					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "#">
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "RvrsBoard.html">
 						<h1 id = "title">
 							<span>Rvrs </span>
 							
@@ -55,8 +55,8 @@
 				</div>
 				<div class = "collapse navbar-collapse" id = "navLinks">
 					<ul  class = "nav navbar-nav">
-						<li><a href="#">Post a Service</a></li> 
-						<li><a href="#">Find a Service</a></li>
+						<li><a href="postService.html">Post a Service</a></li> 
+						<li><a href="findService.html">Find a Service</a></li>
 					</ul>
 				</div>
 			</div>
@@ -66,7 +66,29 @@
 		<!----------------------------------------------------------------------->
 		<div id = "mainContent">
 			
+			<div id = "findBox" class = "container center-block">
+				
+				<fieldset>
+					<legend>
+						<h1>Find a Service</h1>
+					</legend>
+					
+					<div class = "form-group">
+						<label for = "searchOrigin">Enter a Zip Code to Find Service Providers:</label>
+						<input type = "text" class = "form-control" id = "searchOrigin" placeholder = "Origin of Search"/>
+					
+					<div class = "form-group">
+						<label for = "searchRadius">Enter a Search Radius in Miles:</label>
+						<input type = "text" class = "form-control" id = "searchRadius" placeholder = "Within ... Miles"/>
+					</div>
+					
+					<button id = "submitButton" class = "btn" type = "button">
+						Find Service Providers
+					</button>
+					
+					<div id = "serviceListBox"></div>
 			
+				</fieldset>
 			
 			
 		</div>  <!--end of special div for body-->
@@ -84,6 +106,9 @@
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
+	<script src = "radius.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
 	<script>
 		$(document).ready(function() {
 			console.log("DOM loaded");
@@ -96,9 +121,33 @@
 				$("#logo2").hide();
 			
 			}
-	
-	
-	
+			
+			$("#submitButton").on("click", function(){
+				
+				var searchOrigin = $("#searchOrigin").val();
+				var searchRadius = $("#searchRadius").val();
+				
+				
+				if(searchOrigin == "" || searchOrigin == null){
+					alert("Giving us an origin will help us find Service Providers near you.");
+				}
+				else if(searchRadius == "" || searchRadius == null){
+					alert("Giving us a search radius will help us find Service Providers near you.");
+				}
+				else {
+					
+					getRadius(searchOrigin, searchRadius);
+					
+				}
+			});
+			
+			
+			
+			
+			
+			
+			
+			
 		});
 	</script>
 	

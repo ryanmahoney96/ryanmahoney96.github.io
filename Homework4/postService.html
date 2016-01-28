@@ -36,7 +36,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
 					 </button>
-					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "#">
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "RvrsBoard.html">
 						<h1 id = "title">
 							<span>Rvrs </span>
 							
@@ -55,8 +55,8 @@
 				</div>
 				<div class = "collapse navbar-collapse" id = "navLinks">
 					<ul  class = "nav navbar-nav">
-						<li><a href="#">Post a Service</a></li> 
-						<li><a href="#">Find a Service</a></li>
+						<li><a href="postService.html">Post a Service</a></li> 
+						<li><a href="findService.html">Find a Service</a></li>
 					</ul>
 				</div>
 			</div>
@@ -79,18 +79,18 @@
 					</div>
 					
 					<div class = "form-group">
-						<label for = "userEmail">Enter an Email Address</label>
+						<label for = "userEmail">Enter an Email Address:</label>
 						<input type = "text" class = "form-control" id = "userEmail" placeholder = "Your Email Address"/>
 					</div>
 					
 					<div class = "form-group">
-						<label for = "userLocation">Enter your Zip Code</label>
+						<label for = "userLocation">Enter your Zip Code:</label>
 						<input type = "text" class = "form-control" id = "userLocation" placeholder = "Your Zip Code"/>
 						or
-						<button id = "geoButton" class = "btn" type = "button">
-							Find your Location
-						</button>
 					</div>
+					<button id = "geoButton" class = "btn" type = "button">
+							Find your Location
+					</button>
 					
 					<div id = "serviceText">
 						<label for = "serviceContent">What Services can you Provide?
@@ -106,6 +106,9 @@
 					
 					<button id = "submitButton" class = "btn" type = "button">
 						Post your Profile
+					</button>
+					<button id = "cancelButton" class = "btn" type = "button">
+						Cancel
 					</button>
 			
 				</fieldset>
@@ -127,6 +130,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
 	<script src = "reverse.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
 	
 	<script>
 		$(document).ready(function() {
@@ -146,33 +151,41 @@
 				doReverse();
 			
 			});
+			
+			var firebaseRef = new Firebase ("https://providerprofiles.firebaseio.com/");
+			
 
 			
 			$("#submitButton").on("click", function(){
 				
 				var name = $("#userName").val();
 				var email = $("#userEmail").val();
-				var location = $("#userLocaiton").val();
+				var location = $("#userLocation").val();
+				location = location.slice(0, 5);
+				var service = $("#serviceContent").val();
 								
 				console.log(name);
 				console.log(email);
 				console.log(location);
-			
+							
 				if(name == ""){
 					alert("Please enter your name, so Employers can identify you.");
 				}
 				else if(email == "" || validateEmail(email) == false){
 					alert("Please enter your email, so Employers can contact you.");
 				}
-				else if(location == null){
+				else if(location == "" || location == null || location == NaN){
 					alert("Telling us where you are can help Employers find you.");
+				}
+				else if(service == "" || service == null){
+					alert("Please fill in the service section of the page.");
 				}
 				else {
 					
-				
-					firebaseRef.push({"name": name, "pickUp": pickUp, "dropOff": dropOff, "email": email});
+					addToFirebase(name, email, location, service);
 					
-					window.open("confirmation.html", "_self");	
+					window.open("RvrsBoard.html", "_self");
+					alert("Thank you for submitting your Profile");
 				}
 			});
 			
@@ -185,8 +198,20 @@
 				}
 			}
 			
+			function addToFirebase (name, email, location, service) {
+				var test = "";
 				
-	
+				firebaseRef.orderByKey().equalTo(location).once('value', function(snapshot){
+						var timestamp = Date.now();
+						var addRef = new Firebase ("https://providerprofiles.firebaseio.com/" + location);
+						addRef.push({"name": name, "email": email, "service": service, "timestamp":timestamp});
+				});
+								
+			}
+			
+			$("#cancelButton").on("click", function(){
+					window.open("RvrsBoard.html", "_self");
+			});
 	
 		});
 	</script>
