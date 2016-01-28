@@ -46,11 +46,11 @@ function getRadius(zip, radius) {
 					snapshot2.forEach(function(childSnapshot2){
 						console.log("iniffor");
 						providerList.push(childSnapshot2.val());
+						if (u == keyArr.length){
+							createElements(providerList);
+						}
 					});
 				});
-				if (u == keyArr.length - 1){
-					createElements(providerList);
-				}
 			}
 		});
 				
