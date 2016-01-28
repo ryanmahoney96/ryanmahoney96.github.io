@@ -48,7 +48,7 @@ function getRadius(zip, radius) {
 						providerList.push(childSnapshot2.val());
 					});
 					if (u == keyArr.length){
-						console.log("about to call");
+						console.log(providerList.length);
 						createElements(providerList);
 					}
 				});
