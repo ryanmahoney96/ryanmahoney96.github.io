@@ -62,7 +62,7 @@ function getRadius(zip, radius) {
 
 				var provider = providerList[leftOffAt];
 				
-				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
+				var providerLi = $("<li>Name: " + provider.name + "\n" + ", Service: " + provider.service + "\n" + "</li>");
 				
 				providerLi.attr("id", provider.timestamp);
 			
@@ -73,7 +73,7 @@ function getRadius(zip, radius) {
 				
 				
 				var emailButton = document.createElement("button");
-				var btnText = document.createTextNode("Email" + provider.email);
+				var btnText = document.createTextNode("Email" + provider.name);
 
 				emailButton.appendChild(btnText);
 				$("#" + provider.timestamp).append(emailButton);
@@ -84,7 +84,7 @@ function getRadius(zip, radius) {
 					var sendTo = provider.email;
 					console.log(sendTo);
 					
-					window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
+					window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi ' + provider.name + ', \n');
 		
 				});
 			}
