@@ -48,9 +48,18 @@ function getRadius(zip, radius) {
 						providerList.push(childSnapshot2.val());
 					});
 				});
+				if (u == keyArr.length - 1){
+					createElements(providerList);
+				}
 			}
-			
-			for(var t = 0; t < providerList.length; t++ ){
+		});
+				
+		
+		
+    });
+	
+	function createElements(providerList){
+		for(var t = 0; t < providerList.length; t++ ){
 
 				var provider = providerList[t];
 				
@@ -80,11 +89,7 @@ function getRadius(zip, radius) {
 		
 				});
 			}
-		});
-				
-		
-		
-    });
+	}
 
 	
 	// $.ajax({
