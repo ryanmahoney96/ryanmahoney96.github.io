@@ -33,7 +33,7 @@ function getRadius(zip, radius) {
 					if(childSnapshot.key() == zipList[x].zip_code){
 						//for(var y = 0; y < childSnapshot.length; y++){
 							console.log("iniffor");
-							providerList.push(childSnapshot[y]);
+							providerList.push(childSnapshot);
 						//}
 					continue;
 					}
