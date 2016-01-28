@@ -62,7 +62,7 @@ function getRadius(zip, radius) {
 				var sendTo = provider.email;
 				console.log(sendTo);
 				
-				window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name', \n');
+				window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
 	
 			});
 		}
