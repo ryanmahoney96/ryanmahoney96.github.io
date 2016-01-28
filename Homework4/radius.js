@@ -42,11 +42,11 @@ function getRadius(zip, radius) {
 				profileRef.once('value', function(snapshot2){
 					console.log(snapshot2.val());
 					snapshot2.forEach(function(childSnapshot2){
-						console.log("iniffor");
+						console.log(providerList.length);
 						providerList.push(childSnapshot2.val());
 					});
 					if (u == keyArr.length){
-						console.log(providerList.length);
+						//console.log(providerList.length);
 						createElements(providerList);
 					}
 				});
@@ -64,7 +64,7 @@ function getRadius(zip, radius) {
 				
 				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
 				
-				providerLi.attr("id", provider.timestamp + leftOffAt);
+				providerLi.attr("id", provider.timestamp);
 			
 
 				var serviceList = $("#serviceList");
@@ -76,7 +76,7 @@ function getRadius(zip, radius) {
 				var btnText = document.createTextNode("Email" + provider.email);
 
 				emailButton.appendChild(btnText);
-				$("#" + provider.timestamp + leftOffAt).append(emailButton);
+				$("#" + provider.timestamp).append(emailButton);
 				
 				emailButton.addEventListener("click", function(){
 					console.log("emailPressed");
