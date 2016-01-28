@@ -41,11 +41,11 @@ function getRadius(zip, radius) {
 			
 			for(var u = 0; u < keyArr.length; u++){
 				var profileRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + keyArr[u]);
-				profileRef.once(true, function(snapshot){
-					console.log(snapshot.val());
-					snapshot.forEach(function(childSnapshot){
+				profileRef.once('value', function(snapshot2){
+					console.log(snapshot2.val());
+					snapshot.forEach(function(childSnapshot2){
 						console.log("iniffor");
-						providerList.push(childSnapshot.val());
+						providerList.push(childSnapshot2.val());
 					});
 				});
 			}
