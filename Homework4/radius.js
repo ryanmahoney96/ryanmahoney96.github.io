@@ -31,10 +31,10 @@ function getRadius(zip, radius) {
 				for(var x = 0; x < zipList.length; x++){
 					console.log("inloop");
 					if(childSnapshot.key() == zipList[x].zip_code){
-						for(var y = 0; y < childSnapshot.length; y++){
+						//for(var y = 0; y < childSnapshot.length; y++){
 							console.log("iniffor");
 							providerList.push(childSnapshot[y]);
-						}
+						//}
 					continue;
 					}
 				}
@@ -42,35 +42,37 @@ function getRadius(zip, radius) {
 		});
 				
 		for(var t = 0; t < providerList.length; t++ ){
-			var provider = providerList[t];
-			
-			var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
-			
-			providerLi.attr("id", provider + t);
-		
+			for(var y = 0; y < providerList[t].length; y++){
 
-			var serviceList = $("#serviceList");
-				console.log("here");
-			serviceList.append(providerLi);
-			
-			
-			var emailButton = document.createElement("button");
-			var btnText = document.createTextNode("Email" + provider.email);
-
-			emailButton.appendChild(btnText);
-			$("#" + provider + t).append(emailButton);
-			
-			emailButton.addEventListener("click", function(){
-				console.log("emailPressed");
-								
-				var sendTo = provider.email;
-				console.log(sendTo);
+				var provider = providerList[t][y];
 				
-				window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
-	
-			});
-		}
+				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
+				
+				providerLi.attr("id", provider + t);
+			
+
+				var serviceList = $("#serviceList");
+					console.log("here");
+				serviceList.append(providerLi);
+				
+				
+				var emailButton = document.createElement("button");
+				var btnText = document.createTextNode("Email" + provider.email);
+
+				emailButton.appendChild(btnText);
+				$("#" + provider + t).append(emailButton);
+				
+				emailButton.addEventListener("click", function(){
+					console.log("emailPressed");
+									
+					var sendTo = provider.email;
+					console.log(sendTo);
+					
+					window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name + ', \n');
 		
+				});
+			}
+		}
 		
     });
 
