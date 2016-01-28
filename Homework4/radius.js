@@ -15,12 +15,12 @@ function getRadius(zip, radius) {
 	
 	$.getJSON(safe, function(result){
         console.log(result);
-		//var zipList = [];
+		var zipList = [];
 	
-		// for(var i = 0; i < result.zip_codes.length; i++){
-			// console.log("56");
-			// //zipList.push(result.zip_codes[i]);
-		// }
+		for(var i = 0; i < result.zip_codes.length; i++){
+			console.log("56");
+			zipList.push(result.zip_codes[i]);
+		}
     });
 
 	
