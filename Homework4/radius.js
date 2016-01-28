@@ -21,6 +21,7 @@ function getRadius(zip, radius) {
 			console.log("56");
 			zipList.push(result.zip_codes[i]);
 		}
+		console.log(zipList[0]);
     });
 
 	
