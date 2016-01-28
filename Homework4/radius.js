@@ -62,7 +62,7 @@ function getRadius(zip, radius) {
 
 				var provider = providerList[leftOffAt];
 				
-				var providerLi = $("<li>Name: " + provider.name + "\n" + ", Service: " + provider.service + "\n" + "</li>");
+				var providerLi = $("<li><strong>Name</strong>: " + provider.name + "\n" + ", <strong>Service</strong>: " + provider.service + "\n" + "</li>");
 				
 				providerLi.attr("id", provider.timestamp);
 			
@@ -73,7 +73,7 @@ function getRadius(zip, radius) {
 				
 				
 				var emailButton = document.createElement("button");
-				emailButton.addClass("btn");
+				$(emailButton).addClass("btn");
 				var btnText = document.createTextNode("Email " + provider.name);
 
 				emailButton.appendChild(btnText);
