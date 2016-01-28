@@ -10,22 +10,17 @@ function foo(response) {
 function getRadius(zip, radius) {
 	
 	safe = "https://www.zipcodeapi.com/rest/js-4S7WxgmVUhhcBKwZSDwLbTi8Wxw7FlIJdPGL52G0jYdVJJVBnrnylFHhdepSz7CN/radius.json/" + zip + "/" + radius + "/mile";
-	// $.ajax({
-		// "url": safe,
-		// "dataType": "jsonp"
-	// }).done(function(data) {
-		// console.log("success");
-	// }).fail(function(data) {
-		// console.log("error");
-	// });
-	// var script = document.createElement('script');
-	// script.src = safe;
-	// document.body.appendChild(script);
-	
+
 	console.log(safe);
 	
 	$.getJSON(safe, function(result){
-        console.log("success");
+        console.log(result);
+		//var zipList = [];
+	
+		// for(var i = 0; i < result.zip_codes.length; i++){
+			// console.log("56");
+			// //zipList.push(result.zip_codes[i]);
+		// }
     });
 
 	
