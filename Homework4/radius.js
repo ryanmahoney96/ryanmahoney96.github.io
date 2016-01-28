@@ -73,7 +73,8 @@ function getRadius(zip, radius) {
 				
 				
 				var emailButton = document.createElement("button");
-				var btnText = document.createTextNode("Email" + provider.name);
+				emailButton.addClass("btn");
+				var btnText = document.createTextNode("Email " + provider.name);
 
 				emailButton.appendChild(btnText);
 				$("#" + provider.timestamp).append(emailButton);

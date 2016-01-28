@@ -163,6 +163,12 @@ label textarea {
 	background-color:white;
 }
 
+#serviceList li {
+	/*list-style-type:none;*/
+	margin-bottom:5px;
+}
+
+
 
 
 
