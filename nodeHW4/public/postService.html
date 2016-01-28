@@ -1,0 +1,224 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<link rel = "stylesheet" href = "css/styles.css">
+	
+	<title>RvrsBoard</title>
+  </head>
+  
+  <body>
+	
+	<div id = "container">
+		<nav id = "header" class = "navbar navbar-inverse navbar-fixed-top">
+			<div id = "navStyle" class = "container-fluid">
+				<div class = "navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
+					 </button>
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "RvrsBoard.html">
+						<h1 id = "title">
+							<span>Rvrs </span>
+							
+							<div id = "bckwrds">
+								B
+							</div>
+							
+							<span>oard</span>
+						</h1>	
+						
+					</a>
+					 <img src = "css/thumbtack.png" id = "logo2" class = "img img-responsive">
+					
+					<!-- <img src = "css/thumbtack.png" id = "logo2"> -->
+					
+				</div>
+				<div class = "collapse navbar-collapse" id = "navLinks">
+					<ul  class = "nav navbar-nav">
+						<li><a href="postService.html">Post a Service</a></li> 
+						<li><a href="findService.html">Find a Service</a></li> 
+					</ul>
+				</div>
+			</div>
+		</nav>	
+		<h2>...</h2>
+		
+		<!----------------------------------------------------------------------->
+		<div id = "mainContent">
+			
+			<div id = "postBox" class = "container center-block">
+				
+				<fieldset>
+					<legend>
+						<h1>Post a Service</h1>
+					</legend>
+			
+					<div class = "form-group">
+						<label for = "userName">Enter Your Name:</label>
+							<input type = "text" class = "form-control" id = "userName" placeholder = "Your Name"/>
+					</div>
+					
+					<div class = "form-group">
+						<label for = "userEmail">Enter an Email Address:</label>
+						<input type = "text" class = "form-control" id = "userEmail" placeholder = "Your Email Address"/>
+					</div>
+					
+					<div class = "form-group">
+						<label for = "userLocation">Enter your Zip Code:</label>
+						<input type = "text" class = "form-control" id = "userLocation" placeholder = "Your Zip Code"/>
+						or
+					</div>
+					<button id = "geoButton" class = "btn" type = "button">
+							Find your Location
+					</button>
+					
+					<div id = "serviceText">
+						<label for = "serviceContent">What Services can you Provide?
+						<textarea required = "true" id = "serviceContent" rows = "9" cols = "100" placeholder = "List your Skill(s) and/or Service(s)"></textarea></label>
+					</div>
+					
+					
+								
+					
+					
+					
+					
+					
+					<button id = "submitButton" class = "btn" type = "button">
+						Post your Profile
+					</button>
+					<button id = "cancelButton" class = "btn" type = "button">
+						Cancel
+					</button>
+			
+				</fieldset>
+			</div>
+			
+		</div>  <!--end of special div for body-->
+		
+		<footer class = "footer container-fluid">
+			<div class = "container-fluid">
+				Questions? Contact our Help Desk at 847-912-2642
+			</div>
+			
+		</footer>
+		
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<script src = "reverse.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+	
+	<script>
+		$(document).ready(function() {
+			console.log("DOM loaded");
+			
+			var viewportWidth = $(window).width();
+			
+			console.log(viewportWidth);
+			
+			if (viewportWidth < 500){
+				$("#logo2").hide();
+			}
+			
+			$("#geoButton").on("click", function(){
+				
+				console.log("here");
+				doReverse();
+			
+			});
+			
+			var firebaseRef = new Firebase ("https://providerprofiles.firebaseio.com/");
+			
+
+			
+			$("#submitButton").on("click", function(){
+				
+				var name = $("#userName").val();
+				var email = $("#userEmail").val();
+				var location = $("#userLocation").val();
+				location = location.slice(0, 5);
+				var service = $("#serviceContent").val();
+								
+				console.log(name);
+				console.log(email);
+				console.log(location);
+							
+				if(name == ""){
+					alert("Please enter your name, so Employers can identify you.");
+				}
+				else if(email == "" || validateEmail(email) == false){
+					alert("Please enter your email, so Employers can contact you.");
+				}
+				else if(location == "" || location == null || location == NaN){
+					alert("Telling us where you are can help Employers find you.");
+				}
+				else if(service == "" || service == null){
+					alert("Please fill in the service section of the page.");
+				}
+				else {
+					
+					addToFirebase(name, email, location, service);
+					
+					window.open("RvrsBoard.html", "_self");
+					alert("Thank you for submitting your Profile");
+				}
+			});
+			
+			function validateEmail(emailAddress) {
+				var atPos = emailAddress.indexOf("@");
+				var dotPos = emailAddress.lastIndexOf(".");
+			
+				if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= emailAddress.length) {
+					return false;
+				}
+			}
+			
+			function addToFirebase (name, email, location, service) {
+				var test = "";
+				
+				firebaseRef.orderByKey().equalTo(location).once('value', function(snapshot){
+						var timestamp = Date.now();
+						var addRef = new Firebase ("https://providerprofiles.firebaseio.com/" + location);
+						addRef.push({"name": name, "email": email, "service": service, "timestamp":timestamp});
+				});
+								
+			}
+			
+			$("#cancelButton").on("click", function(){
+					window.open("RvrsBoard.html", "_self");
+			});
+	
+		});
+	</script>
+	
+  </body>
+</html>
+
+
+
+

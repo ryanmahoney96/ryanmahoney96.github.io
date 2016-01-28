@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<link rel = "stylesheet" href = "css/styles.css">
+	
+	<title>RvrsBoard</title>
+  </head>
+  
+  <body>
+	
+	<div id = "container">
+		<nav id = "header" class = "navbar navbar-inverse navbar-fixed-top">
+			<div id = "navStyle" class = "container-fluid">
+				<div class = "navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
+					 </button>
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "RvrsBoard.html">
+						<h1 id = "title">
+							<span>Rvrs </span>
+							
+							<div id = "bckwrds">
+								B
+							</div>
+							
+							<span>oard</span>
+						</h1>	
+						
+					</a>
+					 <img src = "css/thumbtack.png" id = "logo2" class = "img img-responsive">
+					
+					<!-- <img src = "css/thumbtack.png" id = "logo2"> -->
+					
+				</div>
+				<div class = "collapse navbar-collapse" id = "navLinks">
+					<ul  class = "nav navbar-nav">
+						<li><a href="postService.html">Post a Service</a></li> 
+						<li><a href="findService.html">Find a Service</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>	
+		<h2>...</h2>
+		
+		<!----------------------------------------------------------------------->
+		<div id = "mainContent">
+			
+			<div id = "findBox" class = "container center-block">
+				
+				<fieldset>
+					<legend>
+						<h1>Find a Service</h1>
+					</legend>
+					
+					<div class = "form-group">
+						<label for = "searchOrigin">Enter a Zip Code to Find Service Providers:</label>
+						<input type = "text" class = "form-control" id = "searchOrigin" placeholder = "Origin of Search"/>
+					
+					<div class = "form-group">
+						<label for = "searchRadius">Enter a Search Radius in Miles:</label>
+						<input type = "text" class = "form-control" id = "searchRadius" placeholder = "Within ... Miles"/>
+					</div>
+					
+					<button id = "submitButton" class = "btn" type = "button">
+						Find Service Providers
+					</button>
+					
+					<div id = "serviceListBox">
+						<ol id = "serviceList">
+						</ol>
+					</div>
+			
+				</fieldset>
+			
+			
+		</div>  <!--end of special div for body-->
+		
+		<footer class = "footer container-fluid">
+			<div class = "container-fluid">
+				Questions? Contact our Help Desk at 847-912-2642
+			</div>
+			
+		</footer>
+		
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<script src = "radius.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			console.log("DOM loaded");
+			
+			var viewportWidth = $(window).width();
+			
+			console.log(viewportWidth);
+			
+			if (viewportWidth < 500){
+				$("#logo2").hide();
+			
+			}
+			
+			$("#submitButton").on("click", function(){
+				
+				var searchOrigin = $("#searchOrigin").val();
+				var searchRadius = $("#searchRadius").val();
+				
+				
+				if(searchOrigin == "" || searchOrigin == null){
+					alert("Giving us an origin will help us find Service Providers near you.");
+				}
+				else if(searchRadius == "" || searchRadius == null){
+					alert("Giving us a search radius will help us find Service Providers near you.");
+				}
+				else {
+					
+					getRadius(searchOrigin, searchRadius);
+					
+				}
+			});
+			
+			
+			
+			
+			
+			
+			
+			
+		});
+	</script>
+	
+  </body>
+</html>
+
+
+
+
