@@ -31,6 +31,7 @@ function getRadius(zip, radius) {
 			snapshot.forEach(function(childSnapshot){
 				for(var x = 0; x < zipList.length; x++){
 					console.log("inloop");
+					console.log(childSnapshot.key());
 					if(childSnapshot.key() == zipList[x].zip_code){
 						keyArr.push(childSnapshot.key());
 						continue;
