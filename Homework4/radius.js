@@ -48,7 +48,7 @@ function getRadius(zip, radius) {
 		
 
 			var serviceList = $("#serviceList");
-				
+				console.log("here");
 			serviceList.append(providerLi);
 			
 			
