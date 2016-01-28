@@ -39,9 +39,8 @@ function getRadius(zip, radius) {
 					}
 				}
 			});
-		});
-				
-		for(var t = 0; t < providerList.length; t++ ){
+			
+			for(var t = 0; t < providerList.length; t++ ){
 			for(var y = 0; y < providerList[t].length; y++){
 
 				var provider = providerList[t][y];
@@ -73,6 +72,10 @@ function getRadius(zip, radius) {
 				});
 			}
 		}
+			
+		});
+				
+		
 		
     });
 
