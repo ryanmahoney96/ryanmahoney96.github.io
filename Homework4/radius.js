@@ -33,7 +33,7 @@ function getRadius(zip, radius) {
 					if(childSnapshot.key() == zipList[x].zip_code){
 						var childRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + childSnapshot.key());
 						childRef.orderByKey().once('value', function(sshot){
-							snapshot.forEach(function(cSnapshot){
+							sshot.forEach(function(cSnapshot){
 								console.log("iniffor");
 								providerList.push(cSnapshot.val());
 							});
