@@ -29,7 +29,9 @@ function getRadius(zip, radius) {
 		firebaseRef.orderByKey().once('value', function(snapshot){
 			snapshot.forEach(function(childSnapshot){
 				for(var x = 0; x < zipList.length; x++){
+					console.log("inloop");
 					if(childSnapshot.key() == zipList[x]){
+						console.log("inif");
 						providerList.push(childSnapshot);
 						continue;
 					}
