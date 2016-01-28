@@ -31,11 +31,13 @@ function getRadius(zip, radius) {
 				for(var x = 0; x < zipList.length; x++){
 					console.log("inloop");
 					if(childSnapshot.key() == zipList[x].zip_code){
-						var p = childSnapshot.child(childSnapshot.key()).val();
-						//for(var y = 0; y < childSnapshot.length; y++){
-							console.log("iniffor");
-							providerList.push(childSnapshot.val());
-						//}
+						var childRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + childSnapshot.key());
+						childRef.orderByKey().once('value', function(sshot){
+							snapshot.forEach(function(cSnapshot){
+								console.log("iniffor");
+								providerList.push(cSnapshot.val());
+							});
+						});	
 					continue;
 					}
 				}
