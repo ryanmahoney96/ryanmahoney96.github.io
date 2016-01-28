@@ -1,21 +1,23 @@
 
 
-var BASE_URL = 'https://www.zipcodeapi.com/rest/ZtNBtXVrOHxhei1EXjXTgwGPrEBZf8DfCqQ6oMxdt4uHnvmlPjf6QVVhzxhPGU4i/radius.json/';
+var safe = 'https://www.zipcodeapi.com/rest/ZtNBtXVrOHxhei1EXjXTgwGPrEBZf8DfCqQ6oMxdt4uHnvmlPjf6QVVhzxhPGU4i/radius.json/';
 //<format>/<zip_code>/<distance>/<units>
-var safe = '';
 
 function getRadius(zip, radius) {
 	
-	safe = BASE_URL + zip + "/" + radius + "/mile";
+	safe += zip + "/" + radius + "/mile";
 	
 	console.log(safe);
-	
+	console.log(safe.zip_codes.length);
 	
 	$.ajax({
 		
-		url: "https://www.zipcodeapi.com/rest/ZtNBtXVrOHxhei1EXjXTgwGPrEBZf8DfCqQ6oMxdt4uHnvmlPjf6QVVhzxhPGU4i/radius.json/" + zip + "/" + radius + "/mile",
+		url: safe,
+		
 		jsonp: "callback",
 		dataType: "jsonp",
+		
+		cache:false,
 		
 		success: function(response){
 			/*
@@ -28,12 +30,23 @@ function getRadius(zip, radius) {
 				zipList.push(response.zip_codes[i]);
 			}
 			*/
-			console.log("success");
-			
+			console.log("in succces block");
 		},
 		
 		error: function (response){
-			console.log("Response: " + response);
+			if(response.status == 200){
+				console.log("success");
+				console.log(response.length);
+				var zipList = [];
+	
+				for(var i = 0; i < response.zip_codes.length; i++){
+					console.log("56");
+					zipList.push(response.zip_codes[i]);
+				}
+			}
+			else {
+				console.log("Response: " + response);
+			}
 		}
 	});
 }
