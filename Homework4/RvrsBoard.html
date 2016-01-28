@@ -69,7 +69,7 @@
 				
 					<div class = "col-sm-8" id = "contentReel">
 						<div id = "reel">
-						
+							<marquee><h2>Content Coming Soon!!!</h2></marquee>
 						</div>
 					</div>
 					
@@ -120,10 +120,12 @@
 			}
 			
 			//figure this out, or do a search of within 10 miles
-			var query = firebaseRef.orderByChild("timestamp").limitToLast(10);
+			var query = firebaseRef.orderByKey().limitToLast(10);
 			
 			query.once("value", function(snapshot) {
-			  console.log(snapshot);
+			  snapshot.forEach(function(childSnapshot){
+			  	 console.log(childSnapshot);
+			  });
 			});
 	
 		});
