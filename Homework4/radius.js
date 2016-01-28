@@ -31,11 +31,11 @@ function getRadius(zip, radius) {
 				for(var x = 0; x < zipList.length; x++){
 					console.log("inloop");
 					if(childSnapshot.key() == zipList[x].zip_code){
-						for(var x = 0; x < childSnapshot.length; x++){
+						for(var y = 0; y < childSnapshot.length; y++){
 							console.log("iniffor");
-							providerList.push(childSnapshot[x]);
+							providerList.push(childSnapshot[y]);
 						}
-						continue;
+					continue;
 					}
 				}
 			});
