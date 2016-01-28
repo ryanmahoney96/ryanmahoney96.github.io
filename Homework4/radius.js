@@ -50,8 +50,6 @@ function getRadius(zip, radius) {
 			serviceList.append(providerLi);
 			
 			
-			
-			
 			var emailButton = document.createElement("button");
 			var btnText = document.createTextNode("Email" + provider.email);
 
@@ -59,10 +57,8 @@ function getRadius(zip, radius) {
 			$("#" + provider + t).append(emailButton);
 			
 			emailButton.addEventListener("click", function(){
-				console.log("pickUpPressed");
-				
-				var requestRef = new Firebase('https://cttRequestLog.firebaseio.com/' + snapshot.key());
-				
+				console.log("emailPressed");
+								
 				var sendTo = provider.email;
 				console.log(sendTo);
 				
