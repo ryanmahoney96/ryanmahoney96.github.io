@@ -64,11 +64,11 @@ function getRadius(zip, radius) {
 				
 				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
 				
-				providerLi.attr("id", provider.timestamp + t);
+				providerLi.attr("id", provider.timestamp + leftOffAt);
 			
 
 				var serviceList = $("#serviceList");
-					console.log("here");
+					console.log(provider.timestamp);
 				serviceList.append(providerLi);
 				
 				
@@ -76,7 +76,7 @@ function getRadius(zip, radius) {
 				var btnText = document.createTextNode("Email" + provider.email);
 
 				emailButton.appendChild(btnText);
-				$("#" + provider.timestamp + t).append(emailButton);
+				$("#" + provider.timestamp + leftOffAt).append(emailButton);
 				
 				emailButton.addEventListener("click", function(){
 					console.log("emailPressed");
