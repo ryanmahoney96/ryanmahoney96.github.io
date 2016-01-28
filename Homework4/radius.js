@@ -15,13 +15,63 @@ function getRadius(zip, radius) {
 	
 	$.getJSON(safe, function(result){
         console.log(result);
+		
+		var firebaseRef = new Firebase  ("https://providerprofiles.firebaseio.com/");
+		
 		var zipList = [];
+		var providerList = [];
 	
 		for(var i = 0; i < result.zip_codes.length; i++){
 			console.log("56");
 			zipList.push(result.zip_codes[i]);
 		}
-		console.log(zipList[0]);
+		
+		firebaseRef.orderByKey().once('value', function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				for(var x = 0; x < zipList.length; x++){
+					if(childSnapshot.key() == zipList[x]){
+						providerList.push(childSnapshot);
+						continue;
+					}
+				}
+			});
+		});
+				
+		for(var t = 0; t < providerList.length; t++ ){
+			var provider = providerList[t];
+			
+			var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
+			
+			providerLi.attr("id", provider + t);
+		
+
+			var serviceList = $("#serviceList");
+				
+			serviceList.append(providerLi);
+			
+			
+			
+			
+			var emailButton = document.createElement("button");
+			var btnText = document.createTextNode("Email" + provider.email);
+
+			emailButton.appendChild(btnText);
+			$("#" + provider + t).append(emailButton);
+			
+			emailButton.addEventListener("click", function(){
+				console.log("pickUpPressed");
+				
+				var requestRef = new Firebase('https://cttRequestLog.firebaseio.com/' + snapshot.key());
+				
+				var sendTo = provider.email;
+				console.log(sendTo);
+				
+				window.open('mailto:' + sendTo + '?subject=I am interested in your RvrsBoard Post &body= Hi' + provider.name', \n');
+	
+			});
+		}
+		
+		
     });
 
 	
