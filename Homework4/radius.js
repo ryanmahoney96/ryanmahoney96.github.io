@@ -9,7 +9,7 @@ function foo(response) {
 
 function getRadius(zip, radius) {
 	
-	safe = "https://www.zipcodeapi.com/rest/ZtNBtXVrOHxhei1EXjXTgwGPrEBZf8DfCqQ6oMxdt4uHnvmlPjf6QVVhzxhPGU4i/radius.json/" + zip + "/" + radius + "/mile";
+	safe = "https://www.zipcodeapi.com/rest/js-4S7WxgmVUhhcBKwZSDwLbTi8Wxw7FlIJdPGL52G0jYdVJJVBnrnylFHhdepSz7CN/radius.json/" + zip + "/" + radius + "/mile";
 	// $.ajax({
 		// "url": safe,
 		// "dataType": "jsonp"
