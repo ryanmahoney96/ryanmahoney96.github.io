@@ -41,7 +41,7 @@ function getRadius(zip, radius) {
 			
 			for(var u = 0; u < keyArr.length; u++){
 				var childRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + keyArr[u]);
-				console.log(childRef);
+				console.log(childRef.val());
 				childRef.orderByKey().on('value', function(snapshot){
 					console.log(snapshot);
 					snapshot.forEach(function(childSnapshot){
