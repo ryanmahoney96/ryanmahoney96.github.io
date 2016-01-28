@@ -3,9 +3,7 @@
 var safe = 'https://www.zipcodeapi.com/rest/ZtNBtXVrOHxhei1EXjXTgwGPrEBZf8DfCqQ6oMxdt4uHnvmlPjf6QVVhzxhPGU4i/radius.json/';
 //<format>/<zip_code>/<distance>/<units>
 
-function foo(response) {
-	console.log(response);
-}
+var leftOffAt = 0;
 
 function getRadius(zip, radius) {
 	
@@ -60,9 +58,9 @@ function getRadius(zip, radius) {
     });
 	
 	function createElements(providerList){
-		for(var t = 0; t < providerList.length; t++ ){
+		for(leftOffAt; leftOffAt < providerList.length; leftOffAt++ ){
 
-				var provider = providerList[t];
+				var provider = providerList[leftOffAt];
 				
 				var providerLi = $("<li>Name:" + provider.name + ", \n Service:" + provider.service + " " + "</li>");
 				
