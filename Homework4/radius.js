@@ -40,10 +40,9 @@ function getRadius(zip, radius) {
 			});
 			
 			for(var u = 0; u < keyArr.length; u++){
-				var childRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + keyArr[u]);
-				console.log(childRef.val());
-				childRef.orderByKey().on('value', function(snapshot){
-					console.log(snapshot);
+				var profileRef = new Firebase  ("https://providerprofiles.firebaseio.com/" + keyArr[u]);
+				profileRef.once('value', function(snapshot){
+					console.log(snapshot.val());
 					snapshot.forEach(function(childSnapshot){
 						console.log("iniffor");
 						providerList.push(childSnapshot.val());
