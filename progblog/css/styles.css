@@ -48,7 +48,7 @@ body {
 }
 
 #navStyle {
-	background-color: #aaaaaa;
+	background-color: #999999;
 	padding-top: 7px;
 }
 
@@ -78,7 +78,6 @@ footer {
 	color:white;
 	background-color:black;
 	padding-bottom:5px;
-	border-image: url("checkerborder.jpg") 17 repeat;
 	border-top-width:15px;
 	border-left-width:0px;
 	border-right-width:0px;
@@ -129,13 +128,6 @@ footer {
 	text-align:center;
 }
 
-.textbox img {
-	width:140px;
-	height:120px;
-	float:left;
-	padding-right:10px;
-}
-
 #summary {
 	font-size:150%;
 }
@@ -174,11 +166,6 @@ footer {
 	width:400px;
 }
 
-#startDDList, #endDDList {
-	height:150px;
-	overflow:auto;
-}
-
 #logBox {
 	min-height:300px;
 }
@@ -196,6 +183,18 @@ footer {
 	margin-bottom:15px;
 }
 
+#postBox, #commentForm {
+	background-color: #999999;
+}
+
+label {
+	font-size: 130%;
+}
+
+#blogMain {
+	background-color:white;
+	color:black;
+}
 
 
 

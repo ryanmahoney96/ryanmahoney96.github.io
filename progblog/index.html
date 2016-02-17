@@ -53,6 +53,11 @@
 		<!----------------------------------------------------------------------->
 		<div id = "body">
 			
+			<div id = "blogMain">
+			<ul id = "blogList">
+			
+			</ul>
+			</div>
 				
 		<div class = "textbox container">
 			<h1>Prog is short for Progress, sorry if I mislead you</h1>
@@ -88,5 +93,80 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	
+	<script>
+	
+		$(document).ready(function() {
+			console.log("DOM loaded");
+			
+			var pieceRef = new Firebase("https://cttdrivercomments.firebaseio.com/");
+						
+			var name = null;
+			var target = null;
+			
+			addPieces();
+			
+			function addPieces () {
+				pieceRef.orderByKey().once("value", function(snapshot){
+                    console.log("here");
+                    snapshot.forEach(function(childSnapshot){
+                        
+                        var piece = childSnapshot.val();
+                        
+						console.log(driver.name);
+						
+                        var pieceLi = $("<li><a href = '#' class = 'commentTarget'>" + driver.name + "</a></li>");
+						
+						pieceLi.attr("id", driver.name);
+
+                        var pieceList = $("#blogList");
+						
+						pieceList.append(pieceLi);
+                    });
+					
+					$(".commentTarget").on("click", function(){
+						$("#targetButton").text($(this).text());
+						target = $(this).text();
+					});
+                });	
+			}
+						
+			$("#submitButton").on("click", function(){
+				
+				var comment = $("#commentContent").val();
+				
+				if(comment == ""){
+					alert("To ensure your satisfaction, we ask that you enter something into the comment box");
+				}
+				else {
+					console.log(comment);			
+								
+					if(target == null || target == ""){
+						target = "General Comments";
+					}
+					
+					var commentRef = new Firebase("https://cttdrivercomments.firebaseio.com/" + target);
+					
+					var name = $("#userName").val();
+												
+					if(name == ""){
+						name = "anonymous";
+					}				
+					
+					commentRef.push({"name":name, "comment":comment});
+					
+					window.open("commentConfirmation.html", "_self");	
+				}
+			});
+			
+				
+		});
+	
   </body>
 </html>
+
+
+
+

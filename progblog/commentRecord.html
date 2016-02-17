@@ -55,11 +55,11 @@
 		<div id = "body">
 			
 			<div id = "commentForm" class = "textbox container">
-				<h1>Give us Feedback!</h1>
+				<h1>Give me Feedback!</h1>
 				
 				<fieldset>
 					<legend>
-						Leave a comment about one of our drivers or for the company
+						Leave a comment about one of my writings
 					</legend>
 					
 					<div class = "form-group">
@@ -69,7 +69,7 @@
 					</div>
 						
 					<div class = "form-group">
-						<label for = "targetButton">What is the subject of your Comment?</label>
+						<label for = "targetButton">What was I writing about?</label>
 						
 						<div class = "dropdown">
 							<button id = "targetButton" class = "btn dropdown-toggle" type = "button" data-toggle = "dropdown">
@@ -77,15 +77,17 @@
 								<span class = "glyphicon glyphicon-circle-arrow-down"></span>
 							</button>
 							
-							<ul id = "driverDDList" class = "dropdown-menu">
+							<ul id = "pieceDDList" class = "dropdown-menu">
 																								
 							</ul>	
 						</div>
 						
 					</div>
 					
+					<label for = "commentContent">Your comments:</label>
+					
 					<div>
-						<textarea required = "true" id = "serviceContent" rows = "9" cols = "100" placeholder = "Your Comment(s)"></textarea>
+						<textarea id = "commentContent" rows = "12" cols = "90" placeholder = "Your Comment(s)"></textarea>
 					</div>
 					
 					<button id = "submitButton" class = "btn" type = "button">
@@ -95,12 +97,6 @@
 				</fieldset>
 			</div>
 		
-			
-			
-			
-			
-			
-			
 			
 			
 		</div> <!--end of special div for body-->
@@ -129,32 +125,32 @@
 		$(document).ready(function() {
 			console.log("DOM loaded");
 			
-			var driversRef = new Firebase("https://cttdrivercomments.firebaseio.com/");
+			var pieceRef = new Firebase("https://progresscomments.firebaseio.com/");
 						
 			var name = null;
 			var target = null;
 			
-			addDrivers();
+			addPieces();
 			
-			function addDrivers () {
-				driversRef.orderByKey().once("value", function(snapshot){
+			function addPieces () {
+				pieceRef.orderByKey().once("value", function(snapshot){
                     console.log("here");
                     snapshot.forEach(function(childSnapshot){
                         
-                        var driver = childSnapshot.val();
+                        var piece = childSnapshot.val();
                         
-						console.log(driver.name);
+						console.log(piece.name);
 						
-                        var driverLi = $("<li><a href = '#' class = 'commentTarget'>" + driver.name + "</a></li>");
+                        var pieceLi = $("<li><a href = '#' class = 'pieceTarget'>" + piece.name + "</a></li>");
 						
-						driverLi.attr("id", driver.name);
+						pieceLi.attr("id", piece.name);
 
-                        var driverList = $("#driverDDList");
+                        var pieceList = $("#pieceDDList");
 						
-						driverList.append(driverLi);
+						pieceList.append(pieceLi);
                     });
 					
-					$(".commentTarget").on("click", function(){
+					$(".pieceTarget").on("click", function(){
 						$("#targetButton").text($(this).text());
 						target = $(this).text();
 					});
@@ -164,30 +160,37 @@
 			$("#submitButton").on("click", function(){
 				
 				var comment = $("#commentContent").val();
-				
-				if(comment == ""){
-					alert("To ensure your satisfaction, we ask that you enter something into the comment box");
+				var name = $("#userName").val();
+								
+				console.log(comment);
+							
+				if(name == ""){
+					alert("Please enter your name, dude");
+				}
+				else if(comment == "" || comment == null){
+					alert("Please fill in a comment, bruh");
+				}
+				else if(target == "" || target == null){
+					alert("What are you commenting on???");
 				}
 				else {
-					console.log(comment);			
-								
-					if(target == null || target == ""){
-						target = "General Comments";
-					}
+				
+					addToFirebase(name, comment);
 					
-					var commentRef = new Firebase("https://cttdrivercomments.firebaseio.com/" + target);
-					
-					var name = $("#userName").val();
-												
-					if(name == ""){
-						name = "anonymous";
-					}				
-					
-					commentRef.push({"name":name, "comment":comment});
-					
-					window.open("commentConfirmation.html", "_self");	
+					window.open("home.html", "_self");
+					alert("Thank you, it means so much;D");
 				}
 			});
+			
+			function addToFirebase (name, comment) {
+				var test = "";
+				
+				pieceRef.orderByKey().equalTo(target).once('value', function(snapshot){
+						var addRef = new Firebase ("https://progresscomments.firebaseio.com/" + target);
+						addRef.push({"commenterName": name,  "comment":comment});
+				});
+								
+			}
 			
 				
 		});

@@ -58,45 +58,23 @@
 				
 				<fieldset>
 					<legend>
-						<h1>Post a Service</h1>
+						<h1>Post your Writing</h1>
 					</legend>
 			
 					<div class = "form-group">
-						<label for = "userName">Enter Your Name:</label>
-							<input type = "text" class = "form-control" id = "userName" placeholder = "Your Name"/>
+						<label for = "pieceName">What is this About?</label>
+							<input type = "text" class = "form-control" id = "pieceName" placeholder = "Name of the Piece"/>
 					</div>
 					
-					<div class = "form-group">
-						<label for = "userEmail">Enter an Email Address:</label>
-						<input type = "text" class = "form-control" id = "userEmail" placeholder = "Your Email Address"/>
+					<label for = "serviceContent">Write about it!</label>
+					
+					<div id = "serviceText" class = "container">
+						<textarea required = "true" id = "pieceContent" rows = "9" cols = "100" placeholder = "Write your Blog Entry"></textarea>
 					</div>
-					
-					<div class = "form-group">
-						<label for = "userLocation">Enter your Zip Code:</label>
-						<input type = "text" class = "form-control" id = "userLocation" placeholder = "Your Zip Code"/>
-						or
-					</div>
-					<button id = "geoButton" class = "btn" type = "button">
-							Find your Location
-					</button>
-					
-					<div id = "serviceText">
-						<label for = "serviceContent">What Services can you Provide?
-						<textarea required = "true" id = "serviceContent" rows = "9" cols = "100" placeholder = "List your Skill(s) and/or Service(s)"></textarea></label>
-					</div>
-					
-					
-								
-					
-					
-					
 					
 					
 					<button id = "submitButton" class = "btn" type = "button">
-						Post your Profile
-					</button>
-					<button id = "cancelButton" class = "btn" type = "button">
-						Cancel
+						Post your Post
 					</button>
 			
 				</fieldset>
@@ -125,67 +103,41 @@
 		$(document).ready(function() {
 			console.log("DOM loaded");
 			
-			var firebaseRef = new Firebase("https://cttRequestLog.firebaseio.com/");
-			
-			firebaseRef.orderByKey().on("child_added", function(snapshot, previousNeighborId){
-			
-				var request = snapshot.val();
-				
-				var requestLi = $("<li>" + request.name + ", at " + request.pickUp + " " + "</li>");
-				
-				requestLi.attr("id", snapshot.key());
-			
-				if(previousNeighborId !== null) {
-                        
-                    //get the li of the previous one
-                    var previousRequestLi = $("#" + previousNeighborId);
-                        
-                    //add the new li after the previous one
-                    previousRequestLi.after(requestLi);        
-                        
-                } 
-				
-				else { //no previous neighbor
-                        
-					//grab the guestlist ul
-					var requestList = $("#requestList");
+			var pieceRef = new Firebase("https://progresscomments.firebaseio.com/");
 						
-					//add the first item to the list
-					requestList.append(requestLi);
-					
-                }
+			$("#submitButton").on("click", function(){
 				
-				var pickUpButton = document.createElement("button");
-				var btnText = document.createTextNode("Pick Up");
-				
-				
-				pickUpButton.appendChild(btnText);
-				$("#" + snapshot.key()).append(pickUpButton);
-				
-				pickUpButton.addEventListener("click", function(){
-					console.log("pickUpPressed");
+				var name = $("#pieceName").val();
+				var piece = $("#pieceContent").val();
+								
+				console.log(name);
+							
+				if(name == "" || name == undefined){
+					alert("Please enter the name, dude");
+				}
+				else if(piece == "" || piece == null){
+					alert("Please fill in a piece, bruh");
+				}
+				else {
+					//fix
+					addToFirebase(name, piece);
 					
-					var requestRef = new Firebase('https://cttRequestLog.firebaseio.com/' + snapshot.key());
+					//email link
 					
-					var sendTo = request.email;
-					var pickUpLoc = request.pickUp;
-					console.log(sendTo);
-					
-					window.open('mailto:' + sendTo + '?subject=Your Driver has Arrived!&body=Hey There! This is an email notification letting you know your CTT driver has arrived at ' + pickUpLoc + ' to pick you up.');
-					
-					requestRef.remove();
-				});
+					window.open("home.html", "_self");
+					alert("Thank you, it means so much;D");
+				}
 			});
 			
-			//ask for a continuous read of the root of the firebase with on("child_removed")
-			firebaseRef.on("child_removed", function(snapshot) {
-				
-				//remove the li with the deleted guest's id
-				$("#" + snapshot.key()).remove();
-				
-			});
-			
+			function addToFirebase (name, piece) {
 						
+				pieceRef.orderByKey().equalTo(name).once('value', function(snapshot){
+						var addRef = new Firebase ("https://progresscomments.firebaseio.com/" + name);
+						addRef.set({"name": name, "piece": piece});
+				});		
+			}
+			
+				
 		});
 	</script>
   </body>
