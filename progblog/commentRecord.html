@@ -37,7 +37,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
 					 </button>
-					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "http://ryanmahoney96.github.io/progblog/home.html">
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "http://ryanmahoney96.github.io/progblog/index.html">
 						<h2 id = "homeNav" class = "logo">The Prog Blog</h2>
 					</a>
 				</div>
@@ -139,11 +139,11 @@
                         
                         var piece = childSnapshot.val();
                         
-						console.log(piece.name);
+						console.log(piece.data.name);
 						
-                        var pieceLi = $("<li><a href = '#' class = 'pieceTarget'>" + piece.name + "</a></li>");
+                        var pieceLi = $("<li><a href = '#' class = 'pieceTarget'>" + piece.data.name + "</a></li>");
 						
-						pieceLi.attr("id", piece.name);
+						pieceLi.attr("id", piece.data.name);
 
                         var pieceList = $("#pieceDDList");
 						
@@ -177,7 +177,7 @@
 				
 					addToFirebase(name, comment);
 					
-					window.open("home.html", "_self");
+					window.open("index.html", "_self");
 					alert("Thank you, it means so much;D");
 				}
 			});
@@ -186,7 +186,7 @@
 				var test = "";
 				
 				pieceRef.orderByKey().equalTo(target).once('value', function(snapshot){
-						var addRef = new Firebase ("https://progresscomments.firebaseio.com/" + target);
+						var addRef = new Firebase ("https://progresscomments.firebaseio.com/" + target + "/commentary");
 						addRef.push({"commenterName": name,  "comment":comment});
 				});
 								

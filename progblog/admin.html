@@ -37,7 +37,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
 					 </button>
-					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "http://ryanmahoney96.github.io/progblog/home.html">
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "http://ryanmahoney96.github.io/progblog/index.html">
 						<h2 id = "homeNav" class = "logo">The Prog Blog</h2>
 					</a>
 				</div>
@@ -124,7 +124,7 @@
 					
 					//email link
 					
-					window.open("home.html", "_self");
+					window.open("index.html", "_self");
 					alert("Thank you, it means so much;D");
 				}
 			});
@@ -132,7 +132,7 @@
 			function addToFirebase (name, piece) {
 						
 				pieceRef.orderByKey().equalTo(name).once('value', function(snapshot){
-						var addRef = new Firebase ("https://progresscomments.firebaseio.com/" + name);
+						var addRef = new Firebase ("https://progresscomments.firebaseio.com/" + name + "/data");
 						addRef.set({"name": name, "piece": piece});
 				});		
 			}

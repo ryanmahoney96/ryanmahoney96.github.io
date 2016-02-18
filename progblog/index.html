@@ -36,7 +36,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
 					 </button>
-					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "http://ryanmahoney96.github.io/progblog/home.html">
+					<a class = "navbar-brand" title = "Home Page" id = "navTitle" href = "http://ryanmahoney96.github.io/progblog/index.html">
 						<h2 id = "homeNav" class = "logo">The Prog Blog</h2>
 					</a>
 				</div>
@@ -53,11 +53,6 @@
 		<!----------------------------------------------------------------------->
 		<div id = "body">
 			
-			<div id = "blogMain">
-			<ul id = "blogList">
-			
-			</ul>
-			</div>
 				
 		<div class = "textbox container">
 			<h1>Prog is short for Progress, sorry if I mislead you</h1>
@@ -69,6 +64,12 @@
 			
 			<a href="http://img.izismile.com/img/img7/20140513/640/weird_stock_photos_that_make_absolutely_no_sense_640_05.jpg">Click Here to see how awful human progress can be</a></li> 
 			
+		</div>
+				
+		<div id = "listBox" class = "textbox">
+			<ul id = "blogList">
+
+			</ul>
 		</div>
 			
 		<div class = "spacer1"></div>
@@ -89,6 +90,7 @@
 
 		</footer>
 	</div>
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -101,7 +103,7 @@
 		$(document).ready(function() {
 			console.log("DOM loaded");
 			
-			var pieceRef = new Firebase("https://cttdrivercomments.firebaseio.com/");
+			var pieceRef = new Firebase("https://progresscomments.firebaseio.com/");
 						
 			var name = null;
 			var target = null;
@@ -112,58 +114,45 @@
 				pieceRef.orderByKey().once("value", function(snapshot){
                     console.log("here");
                     snapshot.forEach(function(childSnapshot){
-                        
+                        var r = $.Deferred();
+
                         var piece = childSnapshot.val();
                         
-						console.log(driver.name);
+						console.log(piece.data.name);
 						
-                        var pieceLi = $("<li><a href = '#' class = 'commentTarget'>" + driver.name + "</a></li>");
-						
-						pieceLi.attr("id", driver.name);
-
+                        var pieceLi = $('<li><div class = "pieceName"> "' + piece.data.name + '": </div><pre><div>' + piece.data.piece + "</div></pre><ul id = " + piece.data.name + "></ul></li>");
+																		
                         var pieceList = $("#blogList");
-						
+						console.log("first");
 						pieceList.append(pieceLi);
+						
+						addComments(piece.data.name);
+						
                     });
-					
-					$(".commentTarget").on("click", function(){
-						$("#targetButton").text($(this).text());
-						target = $(this).text();
-					});
+					console.log("once");
                 });	
 			}
-						
-			$("#submitButton").on("click", function(){
-				
-				var comment = $("#commentContent").val();
-				
-				if(comment == ""){
-					alert("To ensure your satisfaction, we ask that you enter something into the comment box");
-				}
-				else {
-					console.log(comment);			
-								
-					if(target == null || target == ""){
-						target = "General Comments";
-					}
-					
-					var commentRef = new Firebase("https://cttdrivercomments.firebaseio.com/" + target);
-					
-					var name = $("#userName").val();
-												
-					if(name == ""){
-						name = "anonymous";
-					}				
-					
-					commentRef.push({"name":name, "comment":comment});
-					
-					window.open("commentConfirmation.html", "_self");	
-				}
-			});
 			
-				
+			function addComments (name){
+			
+				var commentRef = new Firebase("https://progresscomments.firebaseio.com/" + name + "/commentary");
+						
+				commentRef.orderByKey().once("value", function(snapshot3){
+					snapshot3.forEach(function(childSnapshot3){
+						var comments = childSnapshot3.val();
+						
+						var commentLi = $('<li><div class = "commenterName"> "' + comments.commenterName + '": </div><pre><div>' + comments.comment + "</div></pre></li>");
+						console.log("second");
+						var commentList = $("#" + name);
+						console.log(comments.commenterName);
+						commentList.append(commentLi);
+					});
+				});
+			
+			}
+						
 		});
-	
+	</script>
   </body>
 </html>
 

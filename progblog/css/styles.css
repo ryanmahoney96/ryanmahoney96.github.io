@@ -48,7 +48,7 @@ body {
 }
 
 #navStyle {
-	background-color: #999999;
+	background-image: url("concrete.jpg");
 	padding-top: 7px;
 }
 
@@ -136,39 +136,6 @@ footer {
 	list-style-type:circle;
 }
 
-#callerID {
-	font-size:140%;
-	color: #454545;
-}
-
-#drivers, #rideRequestForm {
-	font-size:150%;
-	padding-bottom:40px;
-	margin-bottom:70px;
-}
-
-#drivers li {
-	list-style-type:none;
-}
-
-#ourLocations {
-	font-size:150%;
-	padding-bottom:40px;
-	margin-bottom:70px;
-}
-
-#ourLocations li {
-	list-style-type:none;
-}
-
-#mapBox {
-	height:600px;
-	width:400px;
-}
-
-#logBox {
-	min-height:300px;
-}
 
 #titleTop {
 	text-align:center;
@@ -191,9 +158,20 @@ label {
 	font-size: 130%;
 }
 
-#blogMain {
+#listBox {
+	background-image: url("concrete.jpg");
+	padding:10px;
+	padding-left:0px;
+}
+
+#blogList li {
+	list-style-type:circle;
+	padding-left:0px;
+}
+
+.pieceName {
 	background-color:white;
-	color:black;
+	font-size:145%;
 }
 
 
