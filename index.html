@@ -23,78 +23,70 @@
 		<![endif]-->
 	
 		<link rel = "stylesheet" href = "css/styles.css">
+		<link rel="icon" type="image/png" href="css/images/favicon.png">
 	
 		<title>
-			Ryan Mahoney: The Coolest Mahoney
+			Ryan Mahoney
 		</title>
 		
 	</head>
 	
 	<body>
 	
-	<header>
-		The Ryan Mahoney Main Page
-	</header>
-	
-	<nav class = "col-xs-2">
-		<h4>My <del>Work</del> Art</h4>
+	<div id = "mainBody">
+			<div>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buttonGroup">
+						<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
+				</button>
+				<!--gothic-milwaukee-logo.png-->
+				<img src = "css/images/ryan.jpg" id = "greeter" class = "img img-responsive img-circle" title = "Ryan Mahoney" alt="Ryan Mahoney">
+				
+				<ul class="nav nav-justified collapse" id = "buttonGroup">
+				  <li role="presentation" class= "active"><a class = "lipill" href="#">Home</a></li>
+				  <li role="presentation" class = ""><a class = "lipill" href="buy.html">Check Me Out</a></li>
+				  <li role="presentation" class = ""><a class = "lipill" href="faq.html">Contact Me</a></li>
+				</ul>
+		
+			</div>
+			<hr id = "line">	
+			<div class = "spacer"></div>
+				
+			<div class = "container center-block">
+				<div class = "row">
+					
+					<div class = "col-xs-1"></div>
+					<div class = "col-xs-10 box">
+						<div class = "innerBox">
+							<h1 class = "boxTitle">Ryan Mahoney</h1>
+						</div>
+					</div>
+					
+					<div class = "col-xs-1"></div>
+				</div>
+				
+				<div class = "row">
+					
+					<div class = "spacer"></div>
 
-		<ol>			
-			<a target = "_blank" href = "http://ryanmahoney96.github.io/Homework1/Mark_Mahoney's_Resume.html">
-				<li>Mark Mahoney's Resume</li></a>
-				
-			<a target = "_blank" href = "http://ryanmahoney96.github.io/Homework2/MortgageCalculator.html">
-				<li>Mortgage Calculator</li></a>
-				
-			<a target = "_blank" href = "http://ryanmahoney96.github.io/Homework3/home.html">
-				<li>Carthage Tiny Taxi</li></a>	
-				
-			<a target = "_blank" href = "http://ryanmahoney96.github.io/Homework4/RvrsBoard.html">
-				<li>Rvrs Board</li></a>	
+					<div class = "col-xs-4">
+						
+						</div>
+					</div>
+				</div>
+						
+			</div>
+		
+			<div class = "spacer"></div>
 
-		</ol>
-	</nav>
-	
-	<section class = "col-xs-10">
-			<h4 title = "The picture you dingus"> <span class = "glyphicon glyphicon-arrow-down"></span>Click Me!
-			<span class = "glyphicon glyphicon-arrow-down"></span></h4>
+		
+			<div id = "footer">
 			
-			
-			<a href = "https://www.youtube.com/user/TheTalesofRyan" target = "_blank">
-			<img id = "selfie" title = "You caught me! Click to collect your prize!" 
-			src = "images/huh.png" class = "img-circle img-responsive center-block"></a>
-				
-			
-			<br/>
-			
-			<h2>Welcome!</h2>
-			
-			<p>
-				Here you will find links to my HTML and Web Based Computer Science Projects
-				and things I have on my mind. If you can in any way help, don't hesitate to contact me. Happy Sailing!
+			<p id = "footerText">
+			Call me at: 630-363-6221 | Email me at: <a class = "link" href = "mailto:ryan.mahoney96@gmail.com">ryan.mahoney96@gmail.com</a>
 			</p>
 			
-			<ul>
-			
-				<li>Getting <mark>FREE</mark> wood</li>
-				<li>Beating Fallout 4 (again)</li>
-				<li>Make a cutting board</li>
-				<li>Make a Clock</li>
-				<li>Write Scripts for the channel</li>
-				<li>Make a table</li>
-				
-			</ul>
-			
-	</section>
-	
-	<footer>
-			A webpage developed by expert Programming student Ryan Conrad Mahoney<br/>
-			C:630-363-6221<br/>
-			Email me at <a class = "emails" href= "mailto:rmahoney@carthage.edu"> rmahoney@carthage.edu</a> or 
-			<a class = "emails"  href= "mailto:ryan.mahoney96@gmail.com">ryan.mahoney96@gmail.com <span class = "glyphicon glyphicon-envelope"></span></a>
-			
-	</footer>
-	
+		</div>
+		</div>
 	
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -103,6 +95,31 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
 		crossorigin="anonymous"></script>
+		
+		<script>
+		$(document).ready(function() {
+			console.log("DOM loaded");
+			
+			var viewportWidth = $(window).width();
+			
+			if (viewportWidth > 767){
+				$("#buttonGroup").collapse("show");
+			}			
+			
+			console.log(viewportWidth);
+			
+			$(window).resize(function() {
+				if (viewportWidth > 767){
+					$("#buttonGroup").collapse("show");
+				}
+			});
+			
+			
+		});
+		
+		
+		
+		</script>
 	</body>
 </html>
 

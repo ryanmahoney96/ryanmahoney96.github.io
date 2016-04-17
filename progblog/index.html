@@ -114,7 +114,6 @@
 				pieceRef.orderByKey().once("value", function(snapshot){
                     console.log("here");
                     snapshot.forEach(function(childSnapshot){
-                        var r = $.Deferred();
 
                         var piece = childSnapshot.val();
                         
