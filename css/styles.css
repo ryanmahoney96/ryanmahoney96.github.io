@@ -11,7 +11,7 @@
 
 @font-face {
     font-family: comfortaa;
-    src: url(fonts/Comfortaa-regular.ttf);
+    src: url("fonts/Comfortaa-regular.ttf");
 }
 
 body {
