@@ -9,9 +9,14 @@
     src: url(fonts/Biko_Regular.otf);
 }
 
+@font-face {
+    font-family: comfortaa;
+    src: url(fonts/Comfortaa-regular.ttf);
+}
+
 body {
-	font-family:biko;
-	height: 11900px;
+	font-family:comfortaa;
+	height: 900px;
 	background: url("images/whitebrick.jpg");
 }
 
