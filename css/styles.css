@@ -22,7 +22,7 @@
 body {
 	font-family:comfortaa;
 	height: 900px;
-	background: url("images/whitebrick.jpg");
+	background: url("images/bg.jpg");
 }
 
 ::-webkit-scrollbar {
@@ -30,24 +30,23 @@ body {
 }
  
 ::-webkit-scrollbar-track {
-	background: rgba(200, 200, 200, 0.3);
-    border-radius: 10px;
+	background: rgba(0, 0, 0, 0.9);
+    border-radius: 0px;
 }
  
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 0px;
 	background: url("images/scrolllbar.png");
 }
 
 ::-moz-selection { 
-	background: rgba(224, 22, 43, 0.3);
+	background: rgba(251, 166, 19, 0.4);
 }
 ::selection { 
-	background: rgba(224, 22, 43, 0.3);
+	background: rgba(251, 166, 19, 0.4);
 }
 
 #greeter {
-	border: solid white;
 	text-align: center;
 	display: block;
     margin: 0 auto;
@@ -55,7 +54,7 @@ body {
 }
 
 .glyphicon-menu-hamburger {
-	color: #e0162b;
+	color: #fc7902;
 }
 
 .lipill {
@@ -67,11 +66,11 @@ body {
 .nav>li>a:focus {
     text-decoration: none;
     color: white;
-    background-color: #e0162b;
+    background-color: #fc7902;
 }
 
 .link {
-    color: #e0162b;
+    color: #fc7902;
 }
 .link:hover {
     color: grey;
@@ -105,7 +104,7 @@ body {
     color: black;
 	padding : 3px;
 	margin: 1px;
-	background-color: #e0162b;
+	background-color: #fc7902;
 	border-radius: 2px;
 	/* offset-x | offset-y | blur-radius | spread-radius | color */
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
