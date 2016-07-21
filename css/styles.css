@@ -33,6 +33,10 @@ ul {
     list-style-image: url('images/ul-marker.jpg');
 }
 
+.contax {
+	font-size: 150%;
+}
+
 ::-webkit-scrollbar {
     width: 13px;
 }
