@@ -1,54 +1,30 @@
 
-@font-face {
-	font-family: expressway-rg;
-	src: url(fonts/expressway-rg.ttf);
-}
-
-@font-face {
-    font-family: biko;
-    src: url(fonts/Biko_Regular.otf);
-}
 
 @font-face {
     font-family: comfortaa;
     src: url("fonts/Comfortaa-Regular.ttf");
 }
 
-@font-face {
-    font-family: antipasto;
-    src: url("fonts/Antipasto_regular.otf");
-}
 
 body {
 	font-family:comfortaa;
-	height: 900px;
-	background: url("images/bg.jpg");
+	height: auto;
+	background: url("images/Weave BG.jpg");
 }
 
-p {
-	font-size: 150%;
-}
-
-ul {
-    list-style-image: url('images/ul-marker.jpg');
-}
-
-.contax {
-	font-size: 150%;
-}
 
 ::-webkit-scrollbar {
     width: 13px;
 }
  
 ::-webkit-scrollbar-track {
-	background: rgba(0, 0, 0, 0.9);
+	background: rgba(255, 255, 255, 1);
     border-radius: 0px;
 }
  
 ::-webkit-scrollbar-thumb {
+	background: #363636;
     border-radius: 0px;
-	background: url("images/scrolllbar.png");
 }
 
 ::-moz-selection { 
@@ -58,61 +34,53 @@ ul {
 	background: rgba(251, 166, 19, 0.4);
 }
 
-#greeter {
+.centerText, .boxTitle, .footerText {
 	text-align: center;
-	display: block;
-    margin: 0 auto;
-	margin-bottom: 5px;
 }
 
-.glyphicon-menu-hamburger {
-	color: #fc7902;
+#greeter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#buttonGroup {
+    list-style-type: none;
+    margin-left: auto;
+	margin-right: auto;
+    padding: 0;
+	width: 70%;
+	text-decoration: none;
+}
+
+li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #cecece;
+    color: black;
+	text-decoration: none;
 }
 
 .lipill {
     color:white;
-    background-color: black;
+    background-color: #363636;
 }
 
-li.active a.lipill {
-    background-color: #fc7902;		
+a.lipill {
+    background-color: #363636;	
 }
 
-.nav>li>a:hover,
-.nav>li>a:focus {
-    text-decoration: none;
-    color: white;
-    background-color: #fc7902;
-}
 
 .link {
-    color: #fc7902;
+    color: #cecece;
 }
 .link:hover {
     color: grey;
 	text-decoration: none;
-}
-
-#faqs p {
-    font-size: 130%;
-}
-
-#line {
-    display: block;
-    margin-top: 0.0em;
-    margin-bottom: 0.0em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-}
-
-#intro {
-	text-align: center;
-}
-
-.boxTitle {
-    text-align:center;
 }
 
 /*adjust as necessary*/
@@ -124,10 +92,17 @@ li.active a.lipill {
     color: black;
 	padding : 3px;
 	margin: 1px;
-	background-color: #fc7902;
+	background-color: #363636;
 	border-radius: 2px;
 	/* offset-x | offset-y | blur-radius | spread-radius | color */
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	font-size: 140%;
+	
+	max-width: 80%;
 
 }
 .innerBox {
@@ -147,26 +122,20 @@ li.active a.lipill {
 }
 
 #footer {
+	width: 100%;
+	
     clear: both;
     position: relative;
-    bottom: 0;
     z-index: 10;
-    height: 3em;
     margin-top: -3em;
 	
 	margin-top: 10px;
-	/*min-height: 15%;*/
-	text-align: center;
-	background-color: BLACK;
+	background-color: #363636;
 	
 	font-size: 160%;
 	color: #ffffff;
 	
 	box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.4);
-}
-
-#footerText {
-    text-align: center;
 }
 
 

@@ -34,57 +34,37 @@
 	<body>
 	
 		<div id = "mainBody">
-				<div>
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buttonGroup">
+				<div id = "topNav">
+					<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buttonGroup">
 							<span class = "glyph glyphicon glyphicon-menu-hamburger"></span>
-					</button>
-					<img src = "css/images/ryan.jpg" id = "greeter" class = "img img-responsive img-circle" title = "Ryan Mahoney" alt = "Ryan Mahoney">
+					</button>-->
+					<img src = "css/images/ryan.jpg" id = "greeter"  title = "Ryan Mahoney" alt = "Ryan Mahoney">
 					
-					<ul class="nav nav-justified collapse" id = "buttonGroup">
+					<ul id = "buttonGroup" class = "centerText">
 					  <li class = "active"><a class = "lipill" href = "index.html">Home</a></li>
 					  <li class = ""><a class = "lipill" href = "resume.html">Résumé</a></li>
-					  <li class = ""><a class = "lipill" href = "contactMe.html">Contact Me</a></li>
+					  <li class = ""><a class = "lipill" href = "#footer">Contact Me</a></li>
 					</ul>
 			
 				</div>
 
 				<div class = "spacer"></div>
 					
-				<div class = "container center-block">
-					<div class = "row">
-						
-						<div class = "col-xs-1"></div>
-						<div class = "col-xs-10 box">
-							<div class = "innerBox">
-								<h1 class = "boxTitle">Welcome!</h1>
-								
-								<p id = "intro">My name is Ryan Mahoney. I hope you're having a swell day!</p>
-							</div>
-						</div>
-						<div class = "col-xs-1"></div>
-						
+				<div class = "box" id = "welcome">
+					<div class = "innerBox">
+						<h1 class = "boxTitle">Welcome!</h1>
+							
+						<p id = "intro" class = "centerText">My name is Ryan Mahoney. I'm a junior at Carthage College, pursuing a Bachelor's Degree in Computer Science.</p>
 					</div>
-					
-					<div class = "row">
-						
-						<div class = "spacer"></div>
-
-						<div class = "col-xs-1"></div>
-						<div class = "col-xs-5 box">
-							<div class = "innerBox">
-								<h1 class = "boxTitle">Fun Facts About Me</h1>
-								
-								<ul>
-								<li><p>I am a Computer Science Student at Carthage College</p></li>
-								<li><p>I frequently travel between Kenosha (WI), Streamwood (IL), Spring Grove (IL), and Fond du Lac (WI)</p></li>
-								<li><p>I enjoy using art programs, video editing, and using technology to express my creativity</p></li>
-								<li><p>I enjoy reading and writing satire, poetry, and short stories</p></li>
-								<!--<li><p></p></li>-->
-
-								</ul>
-							</div>
-						</div>
-						<div class = "col-xs-5"></div>
+				</div>
+				
+				<div class = "spacer"></div>
+				
+				<div class = "box" id = "aboutMe">
+					<div class = "innerBox">
+						<h1 class = "boxTitle">A Little Bit About Me</h1>
+							
+						<p></p>
 					</div>
 				</div>
 							
@@ -94,8 +74,7 @@
 
 		<div id = "socialLinks" class = "box">
 			<div class = "innerBox">
-				<a href = "https://www.facebook.com/ryan.mahoney.3591" target = "_blank"><img src = "css/images/glyphicons-social-31-facebook-grey.png"></a>
-				<a href = "https://www.youtube.com/user/TheTalesofRyan" target = "_blank"><img src = "css/images/glyphicons-social-23-youtube-gray.png"></a>
+				
 				<a href = "https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button" target = "_blank"><img src = "css/images/glyphicons-social-18-linked-in-gray.png"></a>
 			</div>
 		</div>
@@ -103,8 +82,10 @@
 		
 		<div id = "footer">
 				
-			<p id = "footerText">
-			Call me at: 630-363-6221 | Email me at: <a target = "_blank" class = "link" href = "mailto:ryan.mahoney96@gmail.com">ryan.mahoney96@gmail.com <img src = "css/images/glyphicons-social-19-gmail.png"></a>
+			<p class = "footerText">
+			Call me at: 630-363-6221
+			</p>
+			<p class = footerText>Email me at: <a target = "_blank" class = "link" href = "mailto:ryan.mahoney96@gmail.com">ryan.mahoney96@gmail.com <img src = "css/images/envelope.png"></a>
 			</p>
 			
 		</div>
