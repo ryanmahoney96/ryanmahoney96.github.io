@@ -78,6 +78,7 @@ li a:hover {
 .lipill {
     color:white;
     background-color: #363636;
+	transition: background-color 0.25s, color 0.25s;
 }
 
 a.lipill {
@@ -145,8 +146,8 @@ a.lipill {
 
 #socialLinks {
 	position: fixed;
-	top: 5%;
-	right: 5%;
+	top: 4%;
+	right: 4%;
 }
 
 #footer {
