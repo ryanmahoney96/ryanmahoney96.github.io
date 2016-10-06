@@ -28,10 +28,10 @@ body {
 }
 
 ::-moz-selection { 
-	background: rgba(251, 166, 19, 0.4);
+	background: rgba(0, 0, 0, 0.15);
 }
 ::selection { 
-	background: rgba(251, 166, 19, 0.4);
+	background: rgba(0, 0, 0, 0.15);
 }
 
 .centerText, .boxTitle, .footerText {
@@ -51,6 +51,16 @@ body {
     padding: 0;
 	width: 70%;
 	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+	color: red;
+}
+
+a:hover {
+	text-decoration: none;
+	color: blue;
 }
 
 li a {
@@ -85,6 +95,7 @@ a.lipill {
 
 /*adjust as necessary*/
 .spacer {
+	clear: both;
     margin-top: 20px;
 }
 
@@ -111,6 +122,23 @@ a.lipill {
 	background-color: white;
 }
 
+#aboutMe {
+	float: left;
+	margin-left: 10%;
+}
+
+#myEducation {
+	float: right;
+	margin-right: 10%;
+}
+
+#resume {
+	width: 80%;
+	clear: both;
+	margin-top: 2%;
+	margin-bottom: 3%;
+}
+
 #mainBody {
 	min-height: 100%;
 }
@@ -123,19 +151,19 @@ a.lipill {
 
 #footer {
 	width: 100%;
+			
+	bottom: 0;
 	
-    clear: both;
     position: relative;
-    z-index: 10;
-    margin-top: -3em;
 	
-	margin-top: 10px;
 	background-color: #363636;
 	
 	font-size: 160%;
 	color: #ffffff;
 	
 	box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.4);
+	
+	overflow: hidden;
 }
 
 
