@@ -96,7 +96,7 @@ a.lipill {
 /*adjust as necessary*/
 .spacer {
 	clear: both;
-    margin-top: 20px;
+    margin-top: 2%;
 }
 
 .box {
@@ -145,8 +145,8 @@ a.lipill {
 
 #socialLinks {
 	position: fixed;
-	bottom: 170px;
-	left: 0px;
+	top: 5%;
+	right: 5%;
 }
 
 #footer {
