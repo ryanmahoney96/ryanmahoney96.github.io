@@ -73,12 +73,14 @@ li a:hover {
     background-color: #cecece;
     color: black;
 	text-decoration: none;
+	border: 5px #717171;
+	border-style: none solid none solid;
 }
 
 .lipill {
     color:white;
     background-color: #363636;
-	transition: background-color 0.25s, color 0.25s;
+	/*transition: background-color 0.25s, color 0.25s, border 0.25s, border-style 0.25s;*/
 }
 
 a.lipill {
