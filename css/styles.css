@@ -125,12 +125,12 @@ a.lipill {
 	background-color: white;
 }
 
-#aboutMe {
+#aboutMe, #hobbies {
 	float: left;
 	margin-left: 10%;
 }
 
-#myEducation {
+#myEducation, #courseWork {
 	float: right;
 	margin-right: 10%;
 }
@@ -167,6 +167,48 @@ a.lipill {
 	box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.4);
 	
 	overflow: hidden;
+}
+
+/*-------------------------------------------*/
+div.image {
+    border: 1px solid #ccc;
+}
+
+div.image:hover {
+    border: 1px solid #777;
+}
+
+div.image img {
+    width: 100%;
+    height: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.galleryItem {
+    padding: 0 6px;
+    float: left;
+    width: 33.3333%;
+}
+
+@media only screen and (max-width: 700px){
+    .galleryItem {
+        width: 49.9%;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .galleryItem {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 

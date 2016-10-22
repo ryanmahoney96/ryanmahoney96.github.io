@@ -41,9 +41,11 @@
 					<img src = "css/images/ryan.jpg" id = "greeter"  title = "Ryan Mahoney" alt = "Ryan Mahoney">
 					
 					<ul id = "buttonGroup" class = "centerText">
+					  <li class = ""><a class = "lipill" href = "#resume">Resumé</a></li>
 					  <li class = ""><a class = "lipill" href = "#aboutMe">About Me</a></li>
-					  <li class = ""><a class = "lipill" href = "#resume">Résumé</a></li>
 					  <li class = ""><a class = "lipill" href = "#footer">Contact Me</a></li>
+					  <li class = ""><a class = "lipill" href = "./photoPortfolio.html">Picture Portfolio</a></li>
+
 					</ul>
 			
 				</div>
@@ -58,19 +60,28 @@
 					</div>
 				</div>
 				
+				<div class = "box" id = "resume">
+					<div class = "innerBox">
+						<h1 class = "boxTitle">My Skills and Resume</h1>
+							
+						<p>I write code in C/C++, Ruby, Clojure, Elixir, Go, SQL, HTML/CSS, and JavaScript. Over the summer of 2016 I participated in a Carthage SURE project called <a href = " https://github.com/sjensen938/A-Statistical-Analysis-of-Bias-in-Films" title = "Our Github Repository" target = "blank">"A Statistical Analysis of Bias in Films."</a> You can download my resume <a href = "/Ryan_Mahoney_Resume.pdf" title = "Ryan Mahoney's Resume" download>here</a> and my current Unofficial Transcript <a href = "/Ryan_Mahoney_unofficial_transcript.pdf" title = "Ryan Mahoney's Transcript" download>here</a>.</p>
+					</div>
+				</div>
+				
 				<div class = "spacer"></div>
 				
 				<div class = "box" id = "aboutMe">
-					<div class = "innerBox">
+					<div class = "innerBox" id = "aboutInner">
 						<h1 class = "boxTitle">A Little Bit About Me</h1>
 							
 						<p>I'm from Streamwood, Illinois. Though my hometown is on the small side, I think it gave me a good start in life. It was no farming town or tiny village, but I feel that because there weren't as many people I was able to get to know everyone a little better. From that, I think I learned how to be an accidental people person. I don't necessarily mean to make friends, but I think people like me all the same. I try to see things from other people's points of view as best as I can, and I think that's what comes through when I meet people.</p>
 					</div>
-				</div>				
+				</div>		
+
 				
 				<div class = "box" id = "myEducation">
-					<div class = "innerBox">
-						<h1 class = "boxTitle">Education</h1>
+					<div class = "innerBox" id = "innerEdu">
+						<h1 class = "boxTitle">My Education</h1>
 							
 						<p>I'm an Alum of Ridge Circle Elementary School, Canton Middle School, and Streamwood High School. I made great friends through high school, and maintain most of my friends even though we've gone our separate ways for college. I'm now in my third year of study at Carthage College, pursuing my Bachelor's degree in Computer Science. I've been on the Dean's List for three years, and I am currently a part of Carthage's Honors Program. After I have graduated from Carthage, I hope to go to graduate school and continue my education somewhere in Wisconsin. </p>
 					</div>
@@ -78,13 +89,40 @@
 				
 				<div class = "spacer"></div>
 				
-				<div class = "box" id = "resume">
+				<div class = "box" id = "hobbies">
 					<div class = "innerBox">
-						<h1 class = "boxTitle">My Skills and Resume</h1>
-							
-						<p>I write code in C/C++, Ruby, Clojure, Elixir, Go, SQL, HTML/CSS, and JavaScript. Over the summer of 2016 I participated in a Carthage SURE project called <a href = " https://github.com/sjensen938/A-Statistical-Analysis-of-Bias-in-Films" target = "blank">"A Statistical Analysis of Bias in Films."</a> You can download my resume <a href = "/Ryan_Mahoney_Resume.pdf" download>here</a>.</p>
+						<h1 class = "boxTitle">A Few of My Hobbies</h1>
+							<ul>
+								<li>Making Custom Drawn Shoes</li>
+								<li>Learning Photoshop Effects</li>
+								<li>Planning out Wood Projects</li>
+								<li>Sketching Characters and Their Characteristics</li>
+								<li>Light Reading/Writing of Poetry</li>
+								<li>Playing Video Games</li>
+							</ul>
 					</div>
 				</div>
+				
+				<div class = "box" id = "courseWork">
+					<div class = "innerBox">
+						<h1 class = "boxTitle">My Computer Science Classes</h1>
+						
+						<ul>
+							<li>Data Structures and Algorithms</li>
+							<li>Discrete Structures</li>
+							<li>Computing Paradigms</li>
+							<li>Data Communications</li>
+							<li>Web Development</li>
+							<li>Database Design and Management</li>
+							<li>Operating Systems</li>
+						</ul>
+							
+					</div>
+				</div>
+				
+				<div class = "spacer" id = "bottomSpacer"></div>
+				
+				
 							
 		</div>
 		
@@ -122,20 +160,23 @@
 			console.log("DOM loaded");
 			
 			var footerHeight = $("#footer").height();
+			var eduHeight = $("#innerEdu").height();
+			
+			$("#aboutInner").css("height", eduHeight + eduHeight);
 			
 			console.log(footerHeight);
 			
-			$("#resume").css("margin-bottom", footerHeight - 50);
+			$("#bottomSpacer").css("margin-bottom", footerHeight - 40);
 						
 			var viewportWidth = $(window).width();
 			
 			if (viewportWidth > 767){
-				$("#aboutMe").css("width", "35%");
-				$("#myEducation").css("width", "35%");
+				$("#aboutMe, #hobbies").css("width", "35%");
+				$("#myEducation, #courseWork").css("width", "35%");
 			}
 			else {
-				$("#aboutMe").css("width", "80%");
-				$("#myEducation").css("width", "80%");
+				$("#aboutMe, #hobbies").css("width", "80%");
+				$("#myEducation, #courseWork").css("width", "80%");
 			}
 			
 			console.log(viewportWidth);
@@ -146,12 +187,12 @@
 				<!--console.log(viewportWidth);-->
 
 				if (viewportWidth > 767){
-					$("#aboutMe").css("width", "35%");
-					$("#myEducation").css("width", "35%");
+					$("#aboutMe, #hobbies").css("width", "35%");
+					$("#myEducation, #courseWork").css("width", "35%");
 				}
 				else {
-					$("#aboutMe").css("width", "80%");
-					$("#myEducation").css("width", "80%");
+					$("#aboutMe, #hobbies").css("width", "80%");
+					$("#myEducation, #courseWork").css("width", "80%");
 				}
 			});
 			
