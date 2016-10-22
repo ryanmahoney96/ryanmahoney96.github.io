@@ -150,6 +150,7 @@ a.lipill {
 	position: fixed;
 	top: 4%;
 	right: 2%;
+	max-width: 150px;
 }
 
 #footer {
