@@ -43,7 +43,7 @@
 					<ul id = "buttonGroup" class = "centerText">
 						<li class = ""><a class = "lipill" href = "./index.html.#resume">Resumé</a></li>
 						<li class = ""><a class = "lipill" href = "./index.html.#aboutMe">About Me</a></li>
-						<li class = ""><a class = "lipill" href = "./index.html.#footer">Contact Me</a></li>
+						<li class = ""><a class = "lipill" href = "#footer">Contact Me</a></li>
 						<li class = ""><a class = "lipill" href = "./index.html">Home</a></li>
 
 					</ul>
@@ -232,6 +232,21 @@
 				while (divs.length) {
 					parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
 				}
+			});
+			
+			$(function() {
+				$('a[href*="#"]:not([href="#"])').click(function() {
+					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+						var target = $(this.hash);
+						target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+						if (target.length) {
+							$('html, body').animate({
+								scrollTop: target.offset().top
+							}, 1000);
+							return false;
+						}
+					}
+				});
 			});
 			
 			

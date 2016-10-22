@@ -58,9 +58,13 @@ a {
 	color: red;
 }
 
-a:hover {
+a:hover, a:active {
 	text-decoration: none;
 	color: blue;
+}
+
+a:link {
+	text-decoration: none;
 }
 
 li a {
