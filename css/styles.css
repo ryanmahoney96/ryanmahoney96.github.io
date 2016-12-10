@@ -194,19 +194,22 @@ div.image img {
 
 .galleryItem {
     padding: 0 6px;
-    float: left;
-    width: 33.3333%;
+    /*float: left;*/
+    width: 51%;
+	margin-bottom: 10px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 @media only screen and (max-width: 700px){
     .galleryItem {
-        width: 49.9%;
+        width: 51%;
     }
 }
 
 @media only screen and (max-width: 500px){
     .galleryItem {
-        width: 100%;
+        width: 51%;
     }
 }
 
